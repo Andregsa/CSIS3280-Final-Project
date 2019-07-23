@@ -19,22 +19,14 @@ class Page{
 <div id="shell">
   <div id="header">
     <h1 id="logo"><a href="#">MovieHunter</a></h1>
-    <div class="social"> <span>FOLLOW US ON:</span>
-      <ul>
-        <li><a class="twitter" href="#">twitter</a></li>
-        <li><a class="facebook" href="#">facebook</a></li>
-        <li><a class="vimeo" href="#">vimeo</a></li>
-        <li><a class="rss" href="#">rss</a></li>
-      </ul>
-    </div>
+   
     <div id="navigation">
       <ul>
         <li><a class="active" href="#">HOME</a></li>
-        <li><a href="#">NEWS</a></li>
-        <li><a href="#">IN THEATERS</a></li>
-        <li><a href="#">COMING SOON</a></li>
-        <li><a href="#">CONTACT</a></li>
-        <li><a href="#">ADVERTISE</a></li>
+        <li><a href="#">MY MOVIES</a></li>
+        <li><a href="#">MY WATCHED MOVIES</a></li>
+        <li><a href="#">MY ACCOUNT</a></li>
+        <li><a href="#">ABOUT</a></li>
       </ul>
     </div>
     <div id="sub-navigation">
@@ -48,6 +40,7 @@ class Page{
         <form action="#" method="get" accept-charset="utf-8">
           <label for="search-field">SEARCH</label>
           <input type="text" name="search field" placeholder="Enter search here" id="search-field" class="blink search-field"  />
+          <input type="text" name="year field" placeholder="Enter year here" id="search-field" class="blink search-field"  />
           <input type="submit" value="GO!" class="search-button" />
         </form>
       </div>
@@ -58,7 +51,7 @@ class Page{
     <?php }
 
 
-static function MainPage(){ ?>
+static function MainPage($movie){ ?>
     <div id="main">
     <div id="content">
       <div class="box">
@@ -67,7 +60,7 @@ static function MainPage(){ ?>
           <p class="text-right"><a href="#">See all</a></p>
         </div>
         <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">X-MAN</span></span> <a href="#"><img src="templates/css/images/movie1.jpg" alt="" /></a> </div>
+          <div class="movie-image"> <span class="play"><span class="name">X-MAN</span></span> <a href="#"><img src="<?php echo $movie?>" alt="" /></a> </div>
           <div class="rating">
             <p>RATING</p>
             <div class="stars">
@@ -245,46 +238,7 @@ static function MainPage(){ ?>
         <div class="cl">&nbsp;</div>
       </div>
     </div>
-    <div id="news">
-      <div class="head">
-        <h3>NEWS</h3>
-        <p class="text-right"><a href="#">See all</a></p>
-      </div>
-      <div class="content">
-        <p class="date">12.04.09</p>
-        <h4>Disney's A Christmas Carol</h4>
-        <p>&quot;Disney's A Christmas Carol,&quot; a multi-sensory thrill ride re-envisioned by Academy Award&reg;-winning filmmaker Robert Zemeckis, captures... </p>
-        <a href="#">Read more</a> </div>
-      <div class="content">
-        <p class="date">11.04.09</p>
-        <h4>Where the Wild Things Are</h4>
-        <p>Innovative director Spike Jonze collaborates with celebrated author Maurice Sendak to bring one of the most beloved books of all time to the big screen in &quot;Where the Wild Things Are,&quot;...</p>
-        <a href="#">Read more</a> </div>
-      <div class="content">
-        <p class="date">10.04.09</p>
-        <h4>The Box</h4>
-        <p>Norma and Arthur Lewis are a suburban couple with a young child who receive an anonymous gift bearing fatal and irrevocable consequences.</p>
-        <a href="#">Read more</a> </div>
-    </div>
-    <div id="coming">
-      <div class="head">
-        <h3>COMING SOON<strong>!</strong></h3>
-        <p class="text-right"><a href="#">See all</a></p>
-      </div>
-      <div class="content">
-        <h4>The Princess and the Frog </h4>
-        <a href="#"><img src="templates/css/images/coming-soon1.jpg" alt="" /></a>
-        <p>Walt Disney Animation Studios presents the musical &quot;The Princess and the Frog,&quot; an animated comedy set in the great city of New Orleans...</p>
-        <a href="#">Read more</a> </div>
-      <div class="cl">&nbsp;</div>
-      <div class="content">
-        <h4>The Princess and the Frog </h4>
-        <a href="#"><img src="templates/css/images/coming-soon2.jpg" alt="" /></a>
-        <p>Walt Disney Animation Studios presents the musical &quot;The Princess and the Frog,&quot; an animated comedy set in the great city of New Orleans...</p>
-        <a href="#">Read more</a> </div>
-    </div>
-    <div class="cl">&nbsp;</div>
-  </div>
+   
 <?php }
 
 
@@ -306,18 +260,53 @@ static function MainPage(){ ?>
 static function showLogin() { ?>
     <form method="POST" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>">
      <div class="form-group" style="width:30%;">
-         <label for="exampleInputEmail1" style="color:white;">UserName</label>
-         <input type="text" name="username" class="form-control" id="exampleInputEmail1"  placeholder="User Name">
+         <label for="email2" style="color:white;">Email</label>
+         <input type="text" name="email2" class="form-control" id="exampleInputEmail1"  placeholder="Email">
      </div>
      <div class="form-group" style="width:30%;">
-         <label for="exampleInputPassword1" style="color:white;">Password</label>
-         <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+         <label for="password2" style="color:white;">Password</label>
+         <input type="password" name="password2" class="form-control" id="exampleInputPassword1" placeholder="Password">
      </div>
-    
-     <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+
+     <button type="submit" class="btn btn-primary" value="Submit">Sign In</button>
    </form>
+   <BR>
+    <button type="button" class="btn btn-primary" onclick="window.location.href ='MovieHunter-SignUp.php'">Create New User</button>
  
      <?php }
+
+     static function showCreateUser() { ?>
+        <form method="POST" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>">
+         <div class="form-group" style="width:30%;">
+             <label for="first_name" style="color:white;">First Name</label>
+             <input type="text" name="first_name" class="form-control" id="first_name"  placeholder="Enter First Name">
+         </div>
+         <div class="form-group" style="width:30%;">
+             <label for="last_name" style="color:white;">Last Name</label>
+             <input type="text" name="last_name" class="form-control" id="last_name"  placeholder="Enter Last Name">
+         </div>
+         <div class="form-group" style="width:30%;">
+             <label for="birthday" style="color:white;">Birthday</label>
+             <input type="text" name="birthday" class="form-control" id="birthday"  placeholder="Enter Yout Birthday">
+         </div>
+         <div class="form-group" style="width:30%;">
+            <label for="InputEmail1" style="color:white;">Email</label>
+            <input type="text" name="email1" class="form-control" id="email1"  placeholder="Enter Your Email">
+        </div>
+         
+         <div class="form-group" style="width:30%;">
+             <label for="password1" style="color:white;">Password</label>
+             <input type="password" name="password1" class="form-control" id="Password1" placeholder="Enter Password">
+         </div>
+         <div class="form-group" style="width:30%;">
+             <label for="con-password" style="color:white;">Confirm Password</label>
+             <input type="password" name="con-password" class="form-control" id="Re-Password" placeholder="Confirm Password">
+         </div>
+        
+         <button type="submit" class="btn btn-primary" value="Submit" >Sign Up</button>
+       </form>
+     
+         <?php }
 
 }
 ?>

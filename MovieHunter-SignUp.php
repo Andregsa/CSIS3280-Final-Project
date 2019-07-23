@@ -4,8 +4,7 @@
 
 
     Page::Header();
-    Page::showLogin();
-    //Page::MainPage();
+    Page::showCreateUser();
     Page::Footer();
 
 
