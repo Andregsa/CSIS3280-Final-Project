@@ -7,6 +7,22 @@ Requirements:
 --PROJECT NAME NEEDS TO BE CHANGED TO 'TeamName' format so 'NinjaTurtles'.
 
 
+
+Change Rents to WatchedMovies and  update DAO Class with Rating also GETTERS and SETTERS
+
+Andre
+Create Selected Movie Page
+MyAccoutn Page
+About Page
+MyMovies Page
+Try to expand movies in the Home page
+
+ADAM
+Validation
+
+
+
+
 //REFERENCES
 [1]Using Rest APIs in a Web application
 https://www.google.com/search?q=how+retrieve+data+web+service+API+php&spell=1&sa=X&ved=0ahUKEwj_kevq_snjAhXmslQKHYybCeoQBQgsKAA&biw=1440&bih=788#kpvalbx=_dnA2XdrVLMqe0wKwtZ_YCA13

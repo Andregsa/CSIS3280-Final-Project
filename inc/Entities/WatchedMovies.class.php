@@ -1,5 +1,5 @@
 <?php
-class Rents
+class WatchedMovies
 {
 //     +---------+------------------+------+-----+---------+----------------+
 // | Field   | Type             | Null | Key | Default | Extra          |
@@ -9,14 +9,16 @@ class Rents
 // | Date    | date             | NO   |     | NULL    |                |
 // +---------+------------------+------+-----+---------+----------------+
     //Attributes
-    private $RentID;
+    private $WatchedID;
     private $MovieID;
     private $Date;
+    private $Rate; //0-10.0 Stars
+
 
     //Getters
-    function getRentID()
+    function getWatchedID()
     {
-        return $this->RentID;
+        return $this->WatchedID;
     }
     function getMovieID()
     {
@@ -28,7 +30,7 @@ class Rents
     }
 
     //Setters
-    function setRentID($rid)
+    function setWatchedID($rid)
     {
         $this->RentID = $rid;
     }
