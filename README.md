@@ -16,10 +16,17 @@ Andre
 Create Selected Movie Page
 MyMovies Page
 Try to expand movies in the Home page
+Schedule Report Gantt Chart
 
 ADAM
 Validation
 REstclient
+User Manual
+
+
+MISSING THE STATISTICS
+MESSAGES 
+ERROR LOGS(GET THE ERRORS FROM THE WEB SERVER)!
 
 //REFERENCES
 [1]Using Rest APIs in a Web application
