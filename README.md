@@ -8,8 +8,7 @@ Requirements:
 
 
 Anusha
-Change Rents to WatchedMovies and  update DAO Class with Rating also GETTERS and SETTERS
-MyAccoutn Page
+MyAccount Page
 About Page
 
 Andre
