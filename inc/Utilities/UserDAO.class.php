@@ -96,7 +96,6 @@ class UserDAO    {
             }
         } catch (Exception $ex) {
             echo $ex->getMessage();
-            self::$db->debugDumpParams();
         }    
 
         //Get the number of affected rows

@@ -28,6 +28,10 @@ class WatchedMovies
     {
         return $this->Date;
     }
+    function getRate()
+    {
+        return $this->Rate;
+    }
 
     //Setters
     function setWatchedID($rid)
@@ -41,6 +45,10 @@ class WatchedMovies
     function setDate($d)
     {
         $this->Date = $d;
+    }
+    function setRate($r)
+    {
+        $this->Rate = $r;
     }
 }
 ?>

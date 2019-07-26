@@ -8,9 +8,7 @@ Requirements:
 
 
 Anusha
-Change Rents to WatchedMovies and  update DAO Class with Rating also GETTERS and SETTERS
-MyAccoutn Page
-About Page
+<b>COMMENTS: MyAccount page currently working on default userid. Once LogIn page works, needs to be replaced by current userid</b>
 
 Andre
 Create Selected Movie Page
