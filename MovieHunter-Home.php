@@ -31,7 +31,7 @@
 switch($action){
     
     //Show Detail Movie
-    case "detailLatest" : detailMovie();
+    case "detailLatest" : detailMovieLatest();
     break;
     case "detailTopRated" : detailMovieTopRated();
     break;
