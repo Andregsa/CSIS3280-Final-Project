@@ -8,8 +8,7 @@
     Page::Header();
     UserDAO::initialize();
     //need to get id of current user
-    $id = 1;
-    $user = UserDAO::getUser($id);
+    $user = UserDAO::getUserEmail($_SESSION['logged']);
     if (!empty($_GET))    
     {
         //Perform the Action
@@ -44,6 +43,11 @@
             else
             $nu->setPassword($user->getPassword());
             UserDAO::updateUser($nu);
+            header('Location: '.$_SERVER['PHP_SELF']);
+        }
+        if(isset($_POST['logout']))
+        {
+            session_destroy();
             header('Location: '.$_SERVER['PHP_SELF']);
         }
     }

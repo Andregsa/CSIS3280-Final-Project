@@ -345,6 +345,7 @@ static function showCreateUser($errors) { ?>
         </table>
         <button type="button" class="btn btn-warning" onclick="window.location.href ='MovieHunter-Account.php?action=edit&id=<?php echo $u->getUserID()?>'">Edit</button>
         <button type="button" class="btn btn-warning" onclick="window.location.href ='MovieHunter-Account.php?action=delete&id=<?php echo $u->getUserID()?>'">Delete</button>
+        <button type="submit" class="btn btn-warning" name="logout">Logout</button>
       <?php
       }
       static function editAccountDetails(User $u)
