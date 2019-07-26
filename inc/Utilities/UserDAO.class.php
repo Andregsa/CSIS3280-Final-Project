@@ -56,7 +56,7 @@ class UserDAO    {
 
     }
      //READ a single User by email
-     static function getUserEmail($email)  {
+     static function getUserEmail($email) {
         
         $singleSelect = "SELECT * FROM User WHERE Email = :email;";
 

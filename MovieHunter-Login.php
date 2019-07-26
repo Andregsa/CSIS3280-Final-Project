@@ -17,6 +17,9 @@
             try {
      
             
+            //Error starts here if the return type of getUserEmail is User
+            //So you'll have to change the type to User to test
+            //Since I didn't want to commit the error
             if(UserDAO::getUserEmail($_POST['email2']) == false || UserDAO::getUserEmail($_POST['email2']) == null){
                 throw new exception ("Incorrect username");
             } else {
