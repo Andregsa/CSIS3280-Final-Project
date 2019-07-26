@@ -1,3 +1,6 @@
+DELETE DATABASE IF EXISTS movie_hunter;
+CREATE DATABASE movie_hunter;
+USE movie_hunter;
 DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Rents;
 DROP TABLE IF EXISTS MyMovies;
