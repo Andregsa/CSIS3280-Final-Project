@@ -16,12 +16,21 @@
         if(empty($errors)) {
             try {
           
-            $user = UserDAO::getUserEmail($_POST['email2']);
-       
-            if($user == null){
+            //var_dump($_POST['email2']);
+            //var_dump(UserDAO::getUserEmail($_POST['email2']));
+            //$user = UserDAO::getUserEmail($_POST['email2']);
+            //var_dump($user);
+           /* if($user == null){
                 throw new exception ("Incorrect username or password");
-            }
+            }*/
             
+            if(UserDAO::getUserEmail($_POST['email2']) == false || UserDAO::getUserEmail($_POST['email2']) == null){
+                throw new exception ("Incorrect username");
+            } else {
+                $user = UserDAO::getUserEmail($_POST['email2']);
+             
+            }
+       
            
                 //Verifies that a user is returned and that their password
                 //matches the one they entered
@@ -39,7 +48,7 @@
                     throw new exception ("Incorrect username or password");
                 } 
 
-            } catch (exeception $ex)    {
+            } catch (exception $ex)    {
                 echo $ex->getMessage();
             }
             

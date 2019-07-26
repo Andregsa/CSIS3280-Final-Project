@@ -56,7 +56,7 @@ class UserDAO    {
 
     }
      //READ a single User by email
-     static function getUserEmail($email) : User   {
+     static function getUserEmail($email)  {
         
         $singleSelect = "SELECT * FROM User WHERE Email = :email;";
 
@@ -69,10 +69,8 @@ class UserDAO    {
         //Execute the query
         self::$db->execute();
 
-        //Get the row
-        //var_dump(self::$db->singleResult());
+        
         return self::$db->singleResult();
-
     }
 
     //READ a list of Users
