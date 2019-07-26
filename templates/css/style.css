@@ -389,3 +389,28 @@ h1#logo a {
 #footer .rf {
 	float:right;
 }
+
+#errors	{
+	width: 100%;
+	padding: 0px 0px 0px 10px;
+	font-size: 15px;
+	color:rgb(117, 0, 0);
+	text-align: left;
+}
+.errorLine	{
+	padding: 46px 0px 0px 10px;
+}
+#cont1 {
+	width: 25%;
+	float:left;
+	display: block;
+}
+/*The height is to prevent the footer from overlapping*/
+#cont2 {
+	display: block;
+	width: 75%;
+	height: 575px;
+	float:left;
+}
+
+

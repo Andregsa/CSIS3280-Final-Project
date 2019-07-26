@@ -15,14 +15,14 @@ class UserDAO    {
     static function createUser(User $newUser): int   {
 
         //Generate the INSERT STATEMENT for the user;
-        $sqlInsert = "INSERT INTO User (UserID, Password, Email,First_Name,Last_Name,Birthday)
-         VALUES (:id, :pw, :email, :fn, :ln, :bday);";
+        $sqlInsert = "INSERT INTO User (Password, Email, First_Name, Last_Name, Birthday)
+         VALUES (:pw, :email, :fn, :ln, :bday);";
 
         //prepare the query
         self::$db->query($sqlInsert);
 
         //Setup the bind parameters
-        self::$db->bind(':id',$newUser->getUserID());
+      
         self::$db->bind(':pw', $newUser->getPassword());
         self::$db->bind(':email', $newUser->getEmail());
         self::$db->bind(':fn',$newUser->getFirst_Name());
@@ -33,7 +33,7 @@ class UserDAO    {
         self::$db->execute();
 
         //Return the last inserted ID!!
-       return  self::$db->lastInsertId();
+        return self::$db->lastInsertId();
 
     }
 
@@ -52,6 +52,25 @@ class UserDAO    {
         self::$db->execute();
 
         //Get the row
+        return self::$db->singleResult();
+
+    }
+     //READ a single User by email
+     static function getUserEmail($email) : User   {
+        
+        $singleSelect = "SELECT * FROM User WHERE Email = :email;";
+
+        //Prepare the query
+        self::$db->query($singleSelect);
+
+        //Set the bind parameters
+        self::$db->bind(':email', $email);
+
+        //Execute the query
+        self::$db->execute();
+
+        //Get the row
+        //var_dump(self::$db->singleResult());
         return self::$db->singleResult();
 
     }

@@ -70,5 +70,14 @@ class User
     {
         $this->Birthday = $bday;
     }
+    function verifyPassword(string $passwordToVerify) {
+        
+        $hash = $this->Password;
+
+        if (password_verify($passwordToVerify,$hash)){
+            return true;
+        }
+        
+    }
 }
 ?>

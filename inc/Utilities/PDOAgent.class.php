@@ -101,8 +101,8 @@ class PDOAgent  {
         }
 
         //Return lastInsertedID
-        public function lastInsertedId() : int {
-            return $this->pdo->lastInsertedId();
+        public function lastInsertId() : int {
+            return $this->pdo->lastInsertId();
         }
     
         

@@ -261,38 +261,46 @@ static function showLogin() { ?>
  
      <?php }
 
-     static function showCreateUser() { ?>
-        <form method="POST" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>">
-         <div class="form-group" style="width:30%;">
-             <label for="first_name" style="color:white;">First Name</label>
-             <input type="text" name="first_name" class="form-control" id="first_name"  placeholder="Enter First Name">
-         </div>
-         <div class="form-group" style="width:30%;">
-             <label for="last_name" style="color:white;">Last Name</label>
-             <input type="text" name="last_name" class="form-control" id="last_name"  placeholder="Enter Last Name">
-         </div>
-         <div class="form-group" style="width:30%;">
-             <label for="birthday" style="color:white;">Birthday</label>
-             <input type="text" name="birthday" class="form-control" id="birthday"  placeholder="Enter Yout Birthday">
-         </div>
-         <div class="form-group" style="width:30%;">
-            <label for="InputEmail1" style="color:white;">Email</label>
-            <input type="text" name="email1" class="form-control" id="email1"  placeholder="Enter Your Email">
-        </div>
-         
-         <div class="form-group" style="width:30%;">
-             <label for="password1" style="color:white;">Password</label>
-             <input type="password" name="password1" class="form-control" id="Password1" placeholder="Enter Password">
-         </div>
-         <div class="form-group" style="width:30%;">
-             <label for="con-password" style="color:white;">Confirm Password</label>
-             <input type="password" name="con-password" class="form-control" id="Re-Password" placeholder="Confirm Password">
-         </div>
-        
-         <button type="submit" class="btn btn-primary" value="Submit" >Sign Up</button>
-       </form>
-     
-         <?php }
+static function showCreateUser($errors) { ?>
+  <div id ="cont1">
+     <form method="POST" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>">
+      <div class="form-group">
+          <label for="first_name" style="color:white;">First Name</label>
+          <input type="text" name="first_name" class="form-control" id="first_name"  placeholder="Enter First Name">
+      </div>
+      <div class="form-group">
+          <label for="last_name" style="color:white;">Last Name</label>
+          <input type="text" name="last_name" class="form-control" id="last_name"  placeholder="Enter Last Name">
+      </div>
+      <div class="form-group">
+          <label for="birthday" style="color:white;">Birthday YYYY-MM-DD</label>
+          <input type="text" name="birthday" class="form-control" id="birthday"  placeholder="Enter Your Birthday">
+      </div>
+      <div class="form-group">
+         <label for="InputEmail1" style="color:white;">Email</label>
+         <input type="text" name="email1" class="form-control" id="email1"  placeholder="Enter Your Email">
+     </div>
+      
+      <div class="form-group">
+          <label for="password1" style="color:white;">Password</label>
+          <input type="password" name="password1" class="form-control" id="Password1" placeholder="Enter Password">
+      </div>
+      <div class="form-group">
+          <label for="con-password" style="color:white;">Confirm Password</label>
+          <input type="password" name="con-password" class="form-control" id="Re-Password" placeholder="Confirm Password">
+      </div>
+      <button type="submit" class="btn btn-primary" value="Submit" >Sign Up</button>
+      </form>
+  </div>
+  <div id="cont2">
+      <div id="errors">
+         <?php foreach($errors as $error){ ?>
+         <p class="errorLine"><?php echo $error;?></p>
+         <?php } ?>
+     </div>
+   </div>
+<?php }
+
 
 
 

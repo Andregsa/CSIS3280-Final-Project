@@ -6,7 +6,9 @@
     require_once("inc/Utilities/PDOAgent.class.php");
     require_once("inc/Utilities/PDOAgent.class.php");
     require_once("inc/config.inc.php");
-
+    require_once("inc/Utilities/LoginManager.class.php");
+    
+    LoginManager::verifyLogin();
 
     //Initialize Variables
     $action = "";   
