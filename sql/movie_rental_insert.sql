@@ -1,4 +1,4 @@
-USE movie_hunter_system;
+USE movie_hunter;
 
 INSERT INTO User VALUES
   (1,'$2y$10$1O9YQhsIZFQdTOACpigXtOGyLTVGCFchzRrhLzxH3pLLpgokihjWS','jsmith@gmail.com', 'Julie', 'Smith', '1997-04-02'),
