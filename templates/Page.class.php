@@ -243,13 +243,14 @@ $count=0;
 
     <?php }
 
-static function showLogin() { ?>
+static function showLogin($errors) { ?>
+  <div id ="cont1">
     <form method="POST" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>">
-     <div class="form-group" style="width:30%;">
+     <div class="form-group">
          <label for="email2" style="color:white;">Email</label>
          <input type="text" name="email2" class="form-control" id="exampleInputEmail1"  placeholder="Email">
      </div>
-     <div class="form-group" style="width:30%;">
+     <div class="form-group">
          <label for="password2" style="color:white;">Password</label>
          <input type="password" name="password2" class="form-control" id="exampleInputPassword1" placeholder="Password">
      </div>
@@ -258,7 +259,15 @@ static function showLogin() { ?>
    </form>
    <BR>
     <button type="button" class="btn btn-primary" onclick="window.location.href ='MovieHunter-SignUp.php'">Create New User</button>
- 
+  </div>
+  <div id="cont2">
+      <div id="errors">
+         <?php foreach($errors as $error){ ?>
+         <p class="errorLine"><?php echo $error;?></p>
+         <?php } ?>
+     </div>
+   </div>
+
      <?php }
 
 static function showCreateUser($errors) { ?>

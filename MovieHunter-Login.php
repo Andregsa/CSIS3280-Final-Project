@@ -15,14 +15,7 @@
         $errors = Validation::validateLogin($_POST);
         if(empty($errors)) {
             try {
-          
-            //var_dump($_POST['email2']);
-            //var_dump(UserDAO::getUserEmail($_POST['email2']));
-            //$user = UserDAO::getUserEmail($_POST['email2']);
-            //var_dump($user);
-           /* if($user == null){
-                throw new exception ("Incorrect username or password");
-            }*/
+     
             
             if(UserDAO::getUserEmail($_POST['email2']) == false || UserDAO::getUserEmail($_POST['email2']) == null){
                 throw new exception ("Incorrect username");
@@ -31,11 +24,6 @@
              
             }
        
-           
-                //Verifies that a user is returned and that their password
-                //matches the one they entered
-             
-               
                 if($user != null && $user->verifyPassword($_POST['password2']) == true)
                 {
                     session_start();
