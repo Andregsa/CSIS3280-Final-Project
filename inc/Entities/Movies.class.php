@@ -1,5 +1,5 @@
 <?php
-class MyMovies
+class Movies
 {
 //     +---------+------------------+------+-----+---------+----------------+
 // | Field   | Type             | Null | Key | Default | Extra          |
@@ -20,6 +20,7 @@ class MyMovies
     private $Genre;
     private $Plot;
     private $Poster;
+    private $Rating;
 
     //Getters
     function getMovieID()
@@ -50,6 +51,10 @@ class MyMovies
     {
         return $this->Poster;
     }
+    function getRating()
+    {
+        return $this->Rating;
+    }
     
     //Setters
     function setMovieID($Mid)
@@ -79,6 +84,10 @@ class MyMovies
     function setPoster($pstURL)
     {
         $this->Poster = $pstURL;
+    }
+    function setRating($newRating)
+    {
+        $this->Rating = $newRating;
     }
 }
 ?>

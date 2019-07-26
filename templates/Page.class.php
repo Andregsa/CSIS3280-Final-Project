@@ -18,11 +18,11 @@ class Page{
 <!-- START PAGE SOURCE -->
 <div id="shell">
   <div id="header">
-    <h1 id="logo"><a href="#">MovieHunter</a></h1>
+    <h1 id="logo"><a href="MovieHunter-Home.php">MovieHunter</a></h1>
    
     <div id="navigation">
       <ul>
-        <li><a class="active" href="#">HOME</a></li>
+        <li><a class="active" href="MovieHunter-Home.php">HOME</a></li>
         <li><a href="#">MY MOVIES</a></li>
         <li><a href="#">MY WATCHED MOVIES</a></li>
         <li><a href="#">MY ACCOUNT</a></li>
@@ -30,20 +30,15 @@ class Page{
       </ul>
     </div>
     <div id="sub-navigation">
-      <ul>
-        <li><a href="#">SHOW ALL</a></li>
-        <li><a href="#">LATEST TRAILERS</a></li>
-        <li><a href="#">TOP RATED</a></li>
-        <li><a href="#">MOST COMMENTED</a></li>
-      </ul>
+  
       <div id="search">
         <form action="#" method="get" accept-charset="utf-8">
           <label for="search-field">SEARCH</label>
-          <input type="text" name="search field" placeholder="Enter search here" id="search-field" class="blink search-field"  />
-          <input type="text" name="year field" placeholder="Enter year here" id="search-field" class="blink search-field"  />
+          <input type="text" name="search field" placeholder="Search a Movie" id="search-field" class="blink search-field"  />
+          <input type="text" name="year field" placeholder="Enter Year (Optional)" id="search-field" class="blink search-field"  />
           <input type="submit" value="GO!" class="search-button" />
         </form>
-      </div>
+      
     </div>
   </div>
 
@@ -51,193 +46,182 @@ class Page{
     <?php }
 
 
-static function MainPage($movie){ ?>
+static function MainPage($topRated,$latestTrailers){ ?>
     <div id="main">
     <div id="content">
+
+
+    <div id="toggle_container"> 
+
       <div class="box">
         <div class="head">
           <h2>LATEST TRAILERS</h2>
-          <p class="text-right"><a href="#">See all</a></p>
+          <p class="text-right">See all</p>
         </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">X-MAN</span></span> <a href="#"><img src="<?php echo $movie?>" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">SPIDER MAN 2</span></span> <a href="#"><img src="templates/css/images/movie2.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">SPIDER MAN 3</span></span> <a href="#"><img src="templates/css/images/movie3.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">VALKYRIE</span></span> <a href="#"><img src="templates/css/images/movie4.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">GLADIATOR</span></span> <a href="#"><img src="templates/css/images/movie5.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie last">
-          <div class="movie-image"> <span class="play"><span class="name">ICE AGE</span></span> <a href="#"><img src="templates/css/images/movie6.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
+
+
+        <?php 
+
+      $count=0;
+        foreach($latestTrailers as $movie) {
+          
+          if($count<6){
+            if($count==0){
+              echo '<div class="Extended">';  
+              echo '<div class="movie">';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="rating">';
+              echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+              echo     '</div>';
+              echo '</div>';
+              
+            }
+            elseif($count>0 && $count<5){
+              echo '<div class="movie">';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="rating">';
+              echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+              echo     '</div>';
+              echo '</div>';    
+            }
+            else{
+              echo '<div class="movie">';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="rating">';
+              echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+              echo     '</div>';
+              echo '</div>';
+              echo '</div>';
+            }
+
+          $count++;
+          }
+
+          else{
+            if($count==6){
+              echo '<div class="Summary">';  
+              echo '<div class="movie">';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="rating">';
+              echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+              echo     '</div>';
+              echo '</div>';
+              
+            }
+            elseif($count>6 && $count<(sizeOf($topRated)-1)){
+              echo '<div class="movie">';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="rating">';
+              echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+              echo     '</div>';
+              echo '</div>';    
+            }
+            else{
+              echo '<div class="movie">';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="rating">';
+              echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+              echo     '</div>';
+              echo '</div>';
+              echo '</div>';
+            }
+
+          $count++;
+          }
+
+
+        }  ?>
+
         <div class="cl">&nbsp;</div>
+        
       </div>
-      <div class="box">
-        <div class="head">
-          <h2>TOP RATED</h2>
-          <p class="text-right"><a href="#">See all</a></p>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">TRANSFORMERS</span></span> <a href="#"><img src="templates/css/images/movie7.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">MAGNETO</span></span> <a href="#"><img src="templates/css/images/movie8.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">KUNG FU PANDA</span></span> <a href="#"><img src="templates/css/images/movie9.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">EAGLE EYE</span></span> <a href="#"><img src="templates/css/images/movie10.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">NARNIA</span></span> <a href="#"><img src="templates/css/images/movie11.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie last">
-          <div class="movie-image"> <span class="play"><span class="name">ANGELS &amp; DEMONS</span></span> <a href="#"><img src="templates/css/images/movie12.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="cl">&nbsp;</div>
-      </div>
-      <div class="box">
-        <div class="head">
-          <h2>MOST COMMENTED</h2>
-          <p class="text-right"><a href="#">See all</a></p>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">HOUSE</span></span> <a href="#"><img src="templates/css/images/movie13.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">VACANCY</span></span> <a href="#"><img src="templates/css/images/movie14.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">MIRRORS</span></span> <a href="#"><img src="templates/css/images/movie15.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">THE KINGDOM</span></span> <a href="#"><img src="templates/css/images/movie16.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie">
-          <div class="movie-image"> <span class="play"><span class="name">MOTIVES</span></span> <a href="#"><img src="templates/css/images/movie17.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="movie last">
-          <div class="movie-image"> <span class="play"><span class="name">THE PRESTIGE</span></span> <a href="#"><img src="templates/css/images/movie18.jpg" alt="" /></a> </div>
-          <div class="rating">
-            <p>RATING</p>
-            <div class="stars">
-              <div class="stars-in"> </div>
-            </div>
-            <span class="comments">12</span> </div>
-        </div>
-        <div class="cl">&nbsp;</div>
-      </div>
+
+    <!--End of toggle_container -->
     </div>
+
+      <!-- TOP RATED MOVIES -->
+      <div id="toggle_container"> 
+
+<div class="box">
+  <div class="head">
+    <h2>TOP RATED</h2>
+    <p class="text-right">See all</p>
+  </div>
+
+
+  <?php 
+$count=0;
+  foreach($topRated as $movie) {
+    
+    if($count<6){
+      if($count==0){
+        echo '<div class="Extended">';  
+        echo '<div class="movie">';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="rating">';
+        echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+        echo     '</div>';
+        echo '</div>';
+        
+      }
+      elseif($count>0 && $count<5){
+        echo '<div class="movie">';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="rating">';
+        echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+        echo     '</div>';
+        echo '</div>';    
+      }
+      else{
+        echo '<div class="movie">';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="rating">';
+        echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+        echo     '</div>';
+        echo '</div>';
+        echo '</div>';
+      }
+
+    $count++;
+    }
+
+    else{
+      if($count==6){
+        echo '<div class="Summary">';  
+        echo '<div class="movie">';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="rating">';
+        echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+        echo     '</div>';
+        echo '</div>';
+        
+      }
+      elseif($count>6 && $count<(sizeOf($topRated)-1)){
+        echo '<div class="movie">';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="rating">';
+        echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+        echo     '</div>';
+        echo '</div>';    
+      }
+      else{
+        echo '<div class="movie">';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="rating">';
+        echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+        echo     '</div>';
+        echo '</div>';
+        echo '</div>';
+      }
+
+    $count++;
+    }
+
+
+      }  ?>
+
+
+
    
 <?php }
 
@@ -307,6 +291,28 @@ static function showLogin() { ?>
        </form>
      
          <?php }
+
+
+
+
+  static function MovieDetail(Movies $movie){
+  echo '<div id="main">';
+  echo '<div id="content">';
+
+        echo '<div class="movie">';
+        echo  '<div class="movie-image"> <span class="play"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></span> <a href="#"><img src="'.$movie->getPoster().'" alt="" /></a> </div>';
+        echo  '<div class="rating">';
+        echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+        echo     '</div>';
+        echo '</div>';
+
+
+  echo '</div>';
+  echo '</div>';
+
+
+  
+  }
 
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-class RentsDAO    {
+class WatchedMoviesDAO    {
 
     private static $db;
 

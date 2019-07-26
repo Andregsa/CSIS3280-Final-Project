@@ -1,31 +1,84 @@
 <?php
     require_once("templates/Page.class.php");
-    require_once("inc/Entities/MyMovies.class.php");
+    require_once("inc/Entities/Movies.class.php");
+    require_once("inc/Utilities/TopRatedDAO.class.php");
+    require_once("inc/Utilities/LatestTrailersDAO.class.php");
+    require_once("inc/Utilities/PDOAgent.class.php");
+    require_once("inc/Utilities/PDOAgent.class.php");
+    require_once("inc/config.inc.php");
 
 
-    $movie_url='http://www.omdbapi.com/?apikey=c44d978e&t=pirates+of+the+caribbean&page=1&plot=short';
-    $movies_json= file_get_contents($movie_url);
-    $movies_array = json_decode($movies_json,true);
+    //Initialize Variables
+    $action = "";   
+    $errors=array(); //Variables for error messages
 
-    $myMovies = new MyMovies;
+    //Initialize Customer DAO
+    TopRatedDAO::init();
+    LatestTrailersDAO::init();
 
-    $myMovies->setTitle($movies_array["Title"]);
-    $myMovies->setYear($movies_array["Year"]);
-    $myMovies->setRunTime($movies_array["Runtime"]);
-    $myMovies->setGenre($movies_array["Genre"]);
-    $myMovies->setPlot($movies_array["Plot"]);
-    $myMovies->setPoster($movies_array["Poster"]);
+    //Instantiate Movies
+    $myMovies = new Movies;
 
 
+        //Check if there was get data, perform the action
+    if (!empty($_GET))    {
+        $action = $_GET["action"];
+    }
+    
+    
+//Run a case statement to see what was requested.
 
+switch($action){
+    
+    //Show Detail Movie
+    case "detailLatest" : detailMovie();
+    break;
+    case "detailTopRated" : detailMovieTopRated();
+    break;
+
+   
+    default : homePage();
+
+}
+
+
+
+function homePage(){
+    //GET Top Rated Movies and Lastest Trailers from DB
+    $topRatedMovies = TopRatedDAO::getMovies();
+    $latestTrailers = LatestTrailersDAO::getMovies();
+    global $msg;
+    Page::Header();
+    //Parse Top Rated Movies and Lastest Trailers into Home Page
+    Page::MainPage($topRatedMovies,$latestTrailers);
+    Page::Footer();
+  
+}
+
+function detailMovieLatest(){
+    global $msg;
+    Page::Header();
+    $selectedMovie = LatestTrailersDAO::getMovie($_GET["MovieID"]);
+    //Parse Top Rated Movies and Lastest Trailers into Home Page
+    Page::MovieDetail($selectedMovie);
+    Page::Footer();
+
+}
+function detailMovieTopRated(){
+    global $msg;
+    Page::Header();
+    $selectedMovie = TopRatedDAO::getMovie($_GET["MovieID"]);
+    //Parse Top Rated Movies and Lastest Trailers into Home Page
+    Page::MovieDetail($selectedMovie);
+    Page::Footer();
+
+}
+
+   
     
 
-
-    Page::Header();
-    //Test to retrieve the poster and plot in the X-Man title.
-   Page::MainPage($movies_array["Poster"]);
-   //var_dump($myMovies);
-    Page::Footer();
+    
+   
 
 
 

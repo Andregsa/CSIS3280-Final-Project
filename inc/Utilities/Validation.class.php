@@ -1,7 +1,9 @@
 <?php
 //Validate User Input -- Needed for Log In
-class Validate($inputs)
+class Validation
 {
+
+
   function validateLogin($inputs)
   {
     $errors = array();
@@ -30,4 +32,6 @@ class Validate($inputs)
   }
   
 }
+
+
 ?>

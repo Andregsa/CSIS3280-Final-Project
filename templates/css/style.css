@@ -51,6 +51,8 @@ textarea {
 }
 .text-right {
 	text-align:right;
+	color:blue;
+	cursor:pointer;
 }
 h2 {
 	font-size:10px;
@@ -178,7 +180,7 @@ h1#logo a {
 	text-decoration:underline;
 }
 #search {
-	width:346px;
+	width:auto;
 	margin:0 0 0 auto;
 }
 #search label {
@@ -220,6 +222,12 @@ h1#logo a {
 	padding-top:14px;
 	padding-bottom:11px;
 }
+
+.Extended{
+	display:none;
+}
+
+
 .box .head h2 {
 	float:left;
 	display:inline;
@@ -258,6 +266,7 @@ h1#logo a {
 	z-index:5;
 	cursor:pointer;
 	display:none;
+	opacity:0.9;
 }
 .movie span.name {
 	font-weight:bold;
@@ -277,7 +286,7 @@ h1#logo a {
 }
 .rating p {
 	float:left;
-	font-size:10px;
+	font-size:13px;
 	color:#fff;
 	font-weight:bold;
 }

@@ -21,3 +21,17 @@ $(document).ready(function(){
 			}
 		});
 });
+
+
+$(document).ready(function(){
+	
+	
+	
+	$(".text-right").click(function(){
+		
+		$(this).parent().next().slideToggle();
+		
+	})
+	
+
+})

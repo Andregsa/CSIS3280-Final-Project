@@ -1,8 +1,7 @@
-<?php
-class MyMoviesDAO {
+<?php 
+class LatestTrailersDAO{
 
-
-    // +---------+------------------+------+-----+---------+----------------+
+ // +---------+------------------+------+-----+---------+----------------+
     // | Field   | Type             | Null | Key | Default | Extra          |
     // +---------+------------------+------+-----+---------+----------------+
     // | MovieID | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
@@ -20,14 +19,14 @@ class MyMoviesDAO {
     //Initialize DAO class
     static function init()  {
         
-        self::$db = new PDOAgent("MyMovies");
+        self::$db = new PDOAgent("Movies");
 
     }
     //CREATE a single Movie
-    static function createMovie(MyMovies $newMovie): int   {
+    static function createMovie(Movies $newMovie): int   {
 
         //Generate the INSERT STATEMENT for the movie;
-        $sqlInsert = "INSERT INTO MyMovies (Title, Year,Runtime,Genre,Plot,Poster)
+        $sqlInsert = "INSERT INTO LatestTrailers (Title, Year,Runtime,Genre,Plot,Poster)
          VALUES (:title, :yr, :rn, :g, :plot,:pst);";
 
         //prepare the query
@@ -50,9 +49,9 @@ class MyMoviesDAO {
     }
 
     //READ a single Movie
-    static function getMovie(int $id) : MyMovies   {
+    static function getMovie(int $id) : Movies   {
         
-        $singleSelect = "SELECT * FROM MyMovies WHERE MovieID = :id";
+        $singleSelect = "SELECT * FROM LatestTrailers WHERE MovieID = :id";
 
         //Prepare the query
         self::$db->query($singleSelect);
@@ -71,8 +70,8 @@ class MyMoviesDAO {
 
     static function getMovies()    {
 
-        $sqlQuery = "SELECT * FROM MyMovies;";
-
+        $sqlQuery = "SELECT * FROM LatestTrailers;";
+       
         //Query!
         self::$db->query($sqlQuery);
 
@@ -84,10 +83,10 @@ class MyMoviesDAO {
 
     }
 //UPDATE 
-static function updateMyMovies(MyMovies $updatedMovie): int   {
+static function updateLatestTrailers(Movies $updatedMovie): int   {
     try {
         //Create the query
-        $updateQuery = "UPDATE MyMovies SET Title = :title, Year = :yr, Runtime = :rn, Genre = :g, Plot = :plot, Poster = :poster
+        $updateQuery = "UPDATE LatestTrailers SET Title = :title, Year = :yr, Runtime = :rn, Genre = :g, Plot = :plot, Poster = :poster
          WHERE MovieID = :id;";
 
         //Query
@@ -124,7 +123,7 @@ static function deleteMovie(int $id): bool {
     try {
 
         //Create the delete query
-        $deleteQuery = "DELETE FROM MyMovies WHERE MovieID = :id";
+        $deleteQuery = "DELETE FROM LatestTrailers WHERE MovieID = :id";
 
         self::$db->query($deleteQuery);
 
@@ -150,6 +149,12 @@ static function deleteMovie(int $id): bool {
     
 }
 
+
+
+
+
+
 }
+
 
 ?>
