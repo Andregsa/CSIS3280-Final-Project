@@ -6,10 +6,10 @@ INSERT INTO User VALUES
   (3, '$2y$10$u.CuPl.igZL6a0M7eSMuqOvPcqpYm9tNUVq7DTp4FW60Orieni68G','marthur@gmail.com', 'Michelle','Arthur', '1999-04-10');
 
 INSERT INTO Rents VALUES
-  (1,3,'2019-04-15'),
-  (2,3,'2019-07-15'),
-  (3,2,'2019-06-06'),
-  (4,1,'2019-07-18');
+  (1,3,'2019-04-15',5.5),
+  (2,3,'2019-07-15',7.9),
+  (3,2,'2019-06-06',6),
+  (4,1,'2019-07-18',7);
 
 INSERT INTO MyMovies VALUES
   (1, "The Lion King", 1994, 88,"Animation, Adventure, Drama, Family, Musical","A Lion cub crown prince 

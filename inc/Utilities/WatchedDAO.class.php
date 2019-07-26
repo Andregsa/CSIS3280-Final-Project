@@ -1,29 +1,30 @@
 <?php
 
-class RentsDAO    {
+class WatchedDAO    {
 
     private static $db;
 
     //Initialize DAO class
     static function init()  {
         
-        self::$db = new PDOAgent("Rents");
+        self::$db = new PDOAgent("WatchedMovies");
 
     }
 
-    //CREATE a single Rent
-    static function createRents(Rents $newRent): int   {
+    //CREATE a single WatchedMovie
+    static function createWMovies(WatchedMovies $wm): int   {
 
-        //Generate the INSERT STATEMENT for the Rent;
-        $sqlInsert = "INSERT INTO Rents (MovieID, Date)
-         VALUES (:mid, :d);";
+        //Generate the INSERT STATEMENT for the WatchedMovies;
+        $sqlInsert = "INSERT INTO WatchedMovies (MovieID, Date, Rate)
+         VALUES (:mid, :d, :r);";
 
         //prepare the query
         self::$db->query($sqlInsert);
 
         //Setup the bind parameters
-        self::$db->bind(':mid', $newRent->getMovieID());
-        self::$db->bind(':d', $newRent->getDates());
+        self::$db->bind(':mid', $wm->getMovieID());
+        self::$db->bind(':d', $wm->getDates());
+        self::$db->bind(':r', $wm->getRate());
 
         //Execute the query
         self::$db->execute();
@@ -33,10 +34,10 @@ class RentsDAO    {
 
     }
 
-    //READ a single Rent
-    static function getRent(int $id) : Rents   {
+    //READ a single WatchedMovie
+    static function getWMovie(int $id) : WatchedMovies   {
         
-        $singleSelect = "SELECT * FROM Rent WHERE RentID = :id";
+        $singleSelect = "SELECT * FROM WatchedMovies WHERE WatchedID = :id";
 
         //Prepare the query
         self::$db->query($singleSelect);
@@ -52,9 +53,9 @@ class RentsDAO    {
 
     }
 
-    static function getRents()    {
+    static function getWatchedMovies()    {
 
-        $sqlQuery = "SELECT * FROM Rents;";
+        $sqlQuery = "SELECT * FROM WatchedMovies;";
 
         //Query!
         self::$db->query($sqlQuery);
@@ -68,18 +69,19 @@ class RentsDAO    {
     }
 
     //UPDATE 
-    static function updateRent(Rents $updatedRent): int   {
+    static function updateWatchedMovies(WatchedMovies $updateWMovies): int   {
         try {
             //Create the query
-            $updateQuery = "UPDATE Rents SET MovieID = :mid, Date = :d WHERE RentID = :id;";
+            $updateQuery = "UPDATE WatchedMovies SET MovieID = :mid, Date = :d ,Rate = :r WHERE WatchedID = :id;";
 
             //Query
             self::$db->query($updateQuery);
 
             //Bind
-            self::$db->bind(':id',$updateRent->getRentID());
-            self::$db->bind(':mid',$updatedRent->getRentID());
-            self::$db->bind(':d', $updatedRent->getDate());
+            self::$db->bind(':id',$updateWMovies->getWatchedID());
+            self::$db->bind(':mid',$updateWMovies->getMovieID());
+            self::$db->bind(':d', $updateWMovies->getDate());
+            self::$db->bind(':r', $updateWMovies->getRate());
             
             //Execute the query
             self::$db->execute();
@@ -98,12 +100,12 @@ class RentsDAO    {
     }
 
     //DELETE
-    static function deleteRent(int $id): bool {
+    static function deleteWMovie(int $id): bool {
 
         try {
 
             //Create the delete query
-            $deleteQuery = "DELETE FROM Rents WHERE RentID = :id";
+            $deleteQuery = "DELETE FROM WatchedMovies WHERE WatchedID = :id";
 
             self::$db->query($deleteQuery);
 
