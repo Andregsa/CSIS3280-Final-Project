@@ -278,7 +278,12 @@ $count=0;
 
     <?php }
 
-static function showLogin($errors) { ?>
+static function showLogin($errors,$msg) { ?>
+    <div id="errors">
+         
+      <p class="errorLine"><?php echo $msg;?></p>
+        
+     </div>
   <div id ="cont1">
     <form method="POST" ACTION="<?php echo $_SERVER["PHP_SELF"]; ?>">
      <div class="form-group">

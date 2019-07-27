@@ -12,12 +12,12 @@
     Page::Header();
    
     $errors = array();
+
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $errors = Validation::validateLogin($_POST);
         if(empty($errors)) {
             try {
-     
-            
+    
             //Error starts here if the return type of getUserEmail is User
             //So you'll have to change the type to User to test
             //Since I didn't want to commit the error
@@ -46,7 +46,15 @@
             
         }
     }
-    Page::showLogin($errors);
+
+
+    if (!empty($_GET))    {
+        if(isset($_GET["SignUpMsg"])){
+           $msg = $_GET["SignUpMsg"]."<BR>Please Sign In";
+        }
+    }
+
+    Page::showLogin($errors,$msg);
     Page::Footer();
 
 

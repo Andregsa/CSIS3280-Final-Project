@@ -29,7 +29,7 @@
          
             if(UserDAO::getUserEmail($_POST['email1'])==false){
                 UserDAO::createUser($u);
-                header('Location: '."MovieHunter-Login.php");
+                header('Location: '."MovieHunter-Login.php?SignUpMsg=Account%20Created%20Successfully!");
             }
             else{
                 $errors[]="This email is already being used!";
