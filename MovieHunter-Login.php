@@ -1,6 +1,7 @@
 <?php
     require_once("inc/config.inc.php");
     require_once("templates/Page.class.php");
+    require_once("inc/Utilities/LoginManager.class.php");
     require_once("inc/Utilities/Validation.class.php");
     require_once("inc/Entities/User.class.php");
     require_once("inc/Utilities/PDOAgent.class.php");
@@ -9,7 +10,7 @@
     
     UserDAO::initialize();
     Page::Header();
-
+   
     $errors = array();
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $errors = Validation::validateLogin($_POST);

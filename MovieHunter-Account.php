@@ -4,7 +4,8 @@
     require_once("inc/Entities/User.class.php");
     require_once("inc/Utilities/PDOAgent.class.php");
     require_once("inc/Utilities/UserDAO.class.php");
-    session_start();
+    require_once("inc/Utilities/LoginManager.class.php");
+    LoginManager::verifyLogin();
     Page::Header();
     UserDAO::initialize();
     //need to get id of current user
@@ -25,6 +26,7 @@
     
     }
     //Check for post data
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {     
         if(isset($_POST['saveEdits']))
@@ -45,11 +47,12 @@
             UserDAO::updateUser($nu);
             header('Location: '.$_SERVER['PHP_SELF']);
         }
-        if(isset($_POST['logout']))
+        if(isset($_POST['loggedOut']))
         {
-            //NOT WORKING
-            session_destroy();
+            $_SESSION['logged'] = null;
+            
             header('Location: '.$_SERVER['PHP_SELF']);
+            
         }
     }
 

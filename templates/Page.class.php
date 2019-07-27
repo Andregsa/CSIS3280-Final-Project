@@ -1,7 +1,13 @@
 <?php 
+require_once("inc/config.inc.php");
+require_once("inc/Utilities/PDOAgent.class.php");
+require_once("inc/Utilities/UserDAO.class.php");
+require_once("inc/Entities/User.class.php");
+UserDAO::initialize();
 
 class Page{
     static function Header(){
+      $mySession = LoginManager::verifySession();
       $activePage = basename($_SERVER['PHP_SELF'], ".php");
       ?>
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -27,10 +33,39 @@ class Page{
       <li><a class="<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-Home.php">HOME</a></li>
         <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="#">MY MOVIES</a></li>
         <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="#">MY WATCHED MOVIES</a></li>
-        <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-Account.php">MY ACCOUNT</a></li>
+        <?php if ($mySession == true){ ?>
+          <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-Account.php">MY ACCOUNT</a></li>
+      <?php } else { ?>
+        <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-Login.php">MY ACCOUNT</a></li>
+       <?php  }
+         ?>
+        
         <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-About.php">ABOUT</a></li>
+        
+        <?php if ($mySession == true){ ?>
+        
+          <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" name="loggedBTN" href="MovieHunter-Home.php?logout=true">LOG OUT</a></li>
+        <?php } else { ?>
+          <li><a style="color:#f2a223;" class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-Login.php">SIGN IN</a></li>
+         <?php  }
+           ?>
       </ul>
+      <?php if ($mySession == true){ 
+        
+        $user = UserDAO::getUserEmail($_SESSION['logged']);
+        ?>
+        <div id="positioning">
+        <div id="inform">
+          
+        <p><?php echo "Welcome, ". $user->getFirst_Name()." ". $user->getLast_Name();?></p>
+        </div>
+        </div>
+      <?php } else { ?>
+       <?php  }
+         ?>
+      
     </div>
+    
     <div id="sub-navigation">
   
       <div id="search">
@@ -352,9 +387,12 @@ static function showCreateUser($errors) { ?>
         <td><?php echo $u->getBirthday(); ?></td>
         </tr>
         </table>
+        <form method="POST" action=<?php echo $_SERVER['PHP_SELF'];?>>
+        <input type="hidden" name="loggedOut">
         <button type="button" class="btn btn-warning" onclick="window.location.href ='MovieHunter-Account.php?action=edit&id=<?php echo $u->getUserID()?>'">Edit</button>
         <button type="button" class="btn btn-warning" onclick="window.location.href ='MovieHunter-Account.php?action=delete&id=<?php echo $u->getUserID()?>'">Delete</button>
         <button type="submit" class="btn btn-warning" name="logout">Logout</button>
+        </form>
       <?php
       }
       static function editAccountDetails(User $u)

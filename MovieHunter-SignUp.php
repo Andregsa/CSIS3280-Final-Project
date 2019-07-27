@@ -3,6 +3,7 @@
     require_once("templates/Page.class.php");
     require_once("inc/Utilities/Validation.class.php");
     require_once("inc/Entities/User.class.php");
+    require_once("inc/Utilities/LoginManager.class.php");
     require_once("inc/Utilities/PDOAgent.class.php");
     require_once("inc/Utilities/UserDAO.class.php");
   
