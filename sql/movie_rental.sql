@@ -13,7 +13,8 @@ CREATE TABLE User
   Email CHAR(100) not null,
   First_Name CHAR(30) not null,
   Last_Name CHAR(30) not null,
-  Birthday DATE
+  Birthday DATE,
+  UNIQUE KEY unique_email (Email)
 );
 
 

@@ -26,8 +26,16 @@
             $u->setBirthday($_POST['birthday']);
             $u->setEmail($_POST['email1']);
             $u->setPassword(password_hash($_POST['password1'], PASSWORD_DEFAULT));
-            UserDAO::createUser($u);
-            header('Location: '."MovieHunter-Login.php");
+         
+            if(UserDAO::getUserEmail($_POST['email1'])==false){
+                UserDAO::createUser($u);
+                header('Location: '."MovieHunter-Login.php");
+            }
+            else{
+                $errors[]="This email is already being used!";
+
+            }
+            
         }
 
     }
