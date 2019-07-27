@@ -48,8 +48,8 @@
         if(isset($_POST['logout']))
         {
             //NOT WORKING
-            session_destroy();
-            header('Location: '.$_SERVER['PHP_SELF']);
+            //$_SESSION['logged'] = null;
+            //header('Location:MovieHunter-Login.php');
         }
     }
 
