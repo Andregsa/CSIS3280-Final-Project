@@ -5,7 +5,7 @@
     require_once("inc/Entities/User.class.php");
     require_once("inc/Utilities/LoginManager.class.php");
     require_once("inc/Utilities/PDOAgent.class.php");
-    require_once("inc/Utilities/UserDAO.class.php");
+    require_once("inc/Utilities/DAO/UserDAO.class.php");
   
 
 
@@ -31,6 +31,7 @@
         }
 
     }
+    
     Page::showCreateUser($errors);
     Page::Footer();
 ?>

@@ -1,9 +1,9 @@
 <?php 
-require_once("inc/config.inc.php");
-require_once("inc/Utilities/PDOAgent.class.php");
-require_once("inc/Utilities/UserDAO.class.php");
-require_once("inc/Entities/User.class.php");
-UserDAO::initialize();
+// require_once("inc/config.inc.php");
+// require_once("inc/Utilities/PDOAgent.class.php");
+// require_once("inc/Utilities/UserDAO.class.php");
+// require_once("inc/Entities/User.class.php");
+// UserDAO::initialize();
 
 class Page{
     static function Header(){

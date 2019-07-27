@@ -1,9 +1,8 @@
 <?php
     require_once("templates/Page.class.php");
     require_once("inc/Entities/Movies.class.php");
-    require_once("inc/Utilities/TopRatedDAO.class.php");
-    require_once("inc/Utilities/LatestTrailersDAO.class.php");
-    require_once("inc/Utilities/PDOAgent.class.php");
+    require_once("inc/Utilities/DAO/TopRatedDAO.class.php");
+    require_once("inc/Utilities/DAO/LatestTrailersDAO.class.php");
     require_once("inc/Utilities/PDOAgent.class.php");
     require_once("inc/config.inc.php");
     require_once("inc/Utilities/LoginManager.class.php");
