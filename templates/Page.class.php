@@ -1,9 +1,9 @@
 <?php 
-// require_once("inc/config.inc.php");
-// require_once("inc/Utilities/PDOAgent.class.php");
-// require_once("inc/Utilities/UserDAO.class.php");
-// require_once("inc/Entities/User.class.php");
-// UserDAO::initialize();
+require_once("inc/config.inc.php");
+require_once("inc/Utilities/PDOAgent.class.php");
+require_once("inc/Utilities/DAO/UserDAO.class.php");
+require_once("inc/Entities/User.class.php");
+UserDAO::initialize();
 
 class Page{
     static function Header(){
@@ -295,10 +295,10 @@ static function showLogin($errors,$msg) { ?>
          <input type="password" name="password2" class="form-control" id="exampleInputPassword1" placeholder="Password">
      </div>
 
-     <button type="submit" class="btn btn-primary" value="Submit">Sign In</button>
+     <button type="submit" class="btn btn-warning" value="Submit">Sign In</button>
    </form>
    <BR>
-    <button type="button" class="btn btn-primary" onclick="window.location.href ='MovieHunter-SignUp.php'">Create New User</button>
+    <button type="button" class="btn btn-warning" onclick="window.location.href ='MovieHunter-SignUp.php'">Create New User</button>
   </div>
   <div id="cont2">
       <div id="errors">
@@ -355,22 +355,63 @@ static function showCreateUser($errors) { ?>
 
 
   static function MovieDetail(Movies $movie){
-  echo '<div id="main">';
-  echo '<div id="content">';
 
-        echo '<div class="movie">';
-        echo  '<div class="movie-image"> <span class="play"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></span> <a href="#"><img src="'.$movie->getPoster().'" alt="" /></a> </div>';
-        echo  '<div class="rating">';
-        echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
-        echo     '</div>';
+        echo '<div class="movie_detail">';
+        echo '<table id="movie_detail" class="table table-dark">';
+
+        echo '<tr>';
+        echo  '<td rowspan="6"><img src="'.$movie->getPoster().'" alt="" /></td>' ;
+        echo  '<th>'."Title:".'</th>' ;
+        echo  '<td>'.$movie->getTitle().'</td>' ;
+        echo '</tr>';
+
+        echo '<tr>';
+        echo  '<th>'."Year:".'</th>' ;
+        echo  '<td>'.$movie->getYear().'</td>' ;
+        echo '</tr>';
+        echo '<tr>';
+
+        echo  '<th>'."RunTime:".'</th>' ;
+        echo  '<td>'.$movie->getRuntime().' minutes</td>' ;
+        echo '</tr>';
+
+        echo  '<th>'."Genre:".'</th>' ;
+        echo  '<td>'.$movie->getGenre().'</td>' ;
+        echo '</tr>';
+
+        echo  '<th>'."Plot:".'</th>' ;
+        echo  '<td>'.$movie->getPlot().'</td>' ;
+        echo '</tr>';
+
+        echo  '<th>'."IMdb Rating:".'</th>' ;
+        echo  '<td>'.$movie->getRating().'</td>' ;
+        echo '</tr>';
+
+        echo '</table>';
+
+        echo '<form method="POST" ACTION="'. $_SERVER["PHP_SELF"] .'">';
+        ?>
+
+        <input type="hidden" name="title" value=<?php echo $movie->getTitle(); ?>>
+        <input type="hidden" name="year" value=<?php echo $movie->getYear(); ?>>
+        <input type="hidden" name="runtime" value=<?php echo $movie->getRuntime(); ?>>
+        <input type="hidden" name="genre" value=<?php echo $movie->getGenre(); ?>>
+        <input type="hidden" name="plot" value=<?php echo $movie->getPlot(); ?>>
+        <input type="hidden" name="rating" value=<?php echo $movie->getRating(); ?>>
+        <input type="hidden" name="poster" value=<?php echo $movie->getPoster(); ?>>
+
+        <button type="cancel" class="btn btn-warning" name="cancel">Return</button>
+         <button type="submit" class="btn btn-warning" name="AddToMyMovies">Add To My Movies List</button>
+         <button type="submit" class="btn btn-warning" name="MarkAsWatched">Mark as Watched</button>
+
+        <?php
+        echo '<form>';
+
+     
+        
+        
         echo '</div>';
 
-
-  echo '</div>';
-  echo '</div>';
-
-
-  
   }
       static function showAccountDetails(User $u)
       { 

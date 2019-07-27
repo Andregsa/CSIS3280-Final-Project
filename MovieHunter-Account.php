@@ -15,6 +15,7 @@
         //Perform the Action
         if ($_GET["action"] == "delete")  {
             UserDAO::deleteUser($_GET["id"]);
+            $_SESSION['logged'] = null;
             header('Location: '.$_SERVER['PHP_SELF']);
         }
         else 

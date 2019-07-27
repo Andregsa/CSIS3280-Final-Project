@@ -12,6 +12,7 @@
     Page::Header();
    
     $errors = array();
+    $msg ="";
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $errors = Validation::validateLogin($_POST);
@@ -22,7 +23,7 @@
             //So you'll have to change the type to User to test
             //Since I didn't want to commit the error
             if(UserDAO::getUserEmail($_POST['email2']) == false || UserDAO::getUserEmail($_POST['email2']) == null){
-                throw new exception ("Incorrect username");
+                throw new exception ("Username does not exist!");
             } else {
                 $user = UserDAO::getUserEmail($_POST['email2']);
              
@@ -41,7 +42,7 @@
                 } 
 
             } catch (exception $ex)    {
-                echo $ex->getMessage();
+                $msg = $ex->getMessage();
             }
             
         }

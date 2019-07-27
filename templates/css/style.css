@@ -452,3 +452,9 @@ h1#logo a {
 }
 
 
+#rating{
+	color:rgb(242, 162, 35);
+}
+ #movie_detail td{
+	text-align: justify;
+}
