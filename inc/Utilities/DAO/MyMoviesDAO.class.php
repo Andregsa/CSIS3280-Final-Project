@@ -56,7 +56,7 @@ class MyMoviesDAO {
     }
 
     //READ a single Movie
-    static function getMovie(int $id) : MyMovies   {
+    static function getMovie(int $id)   {
         
         $singleSelect = "SELECT * FROM MyMovies WHERE MovieID = :id";
 

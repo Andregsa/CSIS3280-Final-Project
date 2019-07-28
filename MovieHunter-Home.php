@@ -73,6 +73,32 @@
 
                 }
             }
+            else if($_POST["type"]=="MarkAsWatched"){
+                if(!$_SESSION){
+                    //VALIDATE
+                    $msg = "Please Login First!";
+                    $action="detailMovieID";
+                }
+                else{
+                    $user = UserDAO::getUserEmail($_SESSION['logged']);
+                    $myMovies->setUserID($user->getUserID());
+
+                    //VERIFY IF THE MOVIE IS ALREADY IN THE mymovies LIST!!!!
+
+                    $result = MyMoviesDAO::getMovie($myMovies->getMovieID());
+
+                    if($result!=null){
+                        $wm  = new WatchedMovies();
+                        $wm->setMovieID($myMovies->getMovieID());
+                        $wm->setDate(date("Y:m:d"));
+                        $wm->setRate(0);//must be updated by user.
+                        WatchedMoviesDAO::createWMovies($wm);
+                        $msg="Movie Added to Your Watch List";
+                        $action="detailMovieID";
+                    }
+                }
+
+            }
         }
     }
 

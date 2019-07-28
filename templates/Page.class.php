@@ -34,7 +34,7 @@ class Page{
       <ul>
       <li><a class="<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-Home.php">HOME</a></li>
         <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-MyMovies.php">MY MOVIES</a></li>
-        <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="#">MY WATCHED MOVIES</a></li>
+        <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-WMovies.php">MY WATCHED MOVIES</a></li>
         <?php if ($mySession == true){ ?>
           <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-Account.php">MY ACCOUNT</a></li>
       <?php } else { ?>
@@ -506,6 +506,22 @@ static function showCreateUser($errors) { ?>
         echo '<td>'.$movie->getPlot().'</td>';
         echo '<td>'.$movie->getRating().'</td>';
         echo '<td>'.$movie->getCategory().'</td>';
+        echo '</tr>';
+      }
+      ?>
+      </table>
+      <?php
+      }
+      Static function wmovies($Wm)
+      {?>
+      <table class="table table-dark">
+      <?php
+      foreach($Wm as  $movie)
+      {
+        echo '<tr>';
+        echo '<td>'.$movie->getMovieID().'</td>';
+        echo '<td>'.$movie->getDate().'</td>';
+        echo '<td>'.$movie->getRate().'</td>';
         echo '</tr>';
       }
       ?>
