@@ -50,10 +50,16 @@
         }
         if(isset($_POST['loggedOut']))
         {
+<<<<<<< HEAD
+            //NOT WORKING
+            //$_SESSION['logged'] = null;
+            //header('Location:MovieHunter-Login.php');
+=======
             $_SESSION['logged'] = null;
             
             header('Location: '.$_SERVER['PHP_SELF']);
             
+>>>>>>> fd778d547f39a587763c165cd4ed3402e18755c7
         }
     }
 
