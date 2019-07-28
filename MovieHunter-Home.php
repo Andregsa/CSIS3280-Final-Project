@@ -3,6 +3,8 @@
     require_once("inc/Entities/Movies.class.php");
     require_once("inc/Utilities/DAO/TopRatedDAO.class.php");
     require_once("inc/Utilities/DAO/LatestTrailersDAO.class.php");
+    require_once("inc/Utilities/DAO/MyMoviesDAO.class.php");
+    require_once("inc/Utilities/DAO/HomePageDAO.class.php");
     require_once("inc/Utilities/PDOAgent.class.php");
     require_once("inc/config.inc.php");
     require_once("inc/Utilities/LoginManager.class.php");
@@ -13,17 +15,65 @@
     //Initialize Variables
     $action = "";   
     $errors=array(); //Variables for error messages
+    $msg="";
 
     //Initialize Customer DAO
     TopRatedDAO::init();
     LatestTrailersDAO::init();
+    MyMoviesDAO::init();
+    HomePageDAO::init();
 
-    //Instantiate Movies
-    $myMovies = new Movies;
-    if(isset($_POST['loggedBTN'])){
-        $_SESSION['logged'] = null;
-            
-        header('Location: '.$_SERVER['PHP_SELF']);
+    
+
+    if(!empty($_POST)){
+
+        if(isset($_POST['loggedBTN'])){
+            $_SESSION['logged'] = null;
+                
+            header('Location: '.$_SERVER['PHP_SELF']);
+        }
+
+        //Instantiate Movies
+        $myMovies = new Movies;
+        $myMovies->setMovieID($_POST["movieID"]);
+        $myMovies->setTitle($_POST["title"]);
+        $myMovies->setYear($_POST["year"]);
+        $myMovies->setRuntime($_POST["runtime"]);
+        $myMovies->setGenre($_POST["genre"]);
+        $myMovies->setPlot($_POST["plot"]);
+        $myMovies->setRating($_POST["rating"]);
+        $myMovies->setPoster($_POST["poster"]);
+        $myMovies->setCategory($_POST["category"]);
+
+        if(isset($_POST["cancel"])){
+            if($_POST["cancel"]=="return")
+            $action="homePage";
+
+        }
+        else{
+
+            if($_POST["type"]=="AddToMyMovies"){
+                if(!$_SESSION){
+                    //VALIDATE
+                    $msg = "Please Login First!";
+                    $action="detailMovieID";
+                }
+                else{
+                    $user = UserDAO::getUserEmail($_SESSION['logged']);
+                    $myMovies->setUserID($user->getUserID());
+
+                    //VERIFY IF THE MOVIE IS ALREADY IN THE USER'S LIST!!!!
+
+                    $result = MyMoviesDAO::createMovie($myMovies);
+
+                    if($result>0){
+                        $msg="Movie Added to Your List";
+                        $action="detailMovieID";
+                    }
+
+                }
+            }
+        }
     }
 
         //Check if there was get data, perform the action
@@ -34,6 +84,8 @@
         //If they click the logout button redirect and set their sessions to null.
         if (isset($_GET["logout"])){
             $_SESSION['logged'] = null;
+            unset($_SESSION);
+            session_destroy();
             header('Location: '.$_SERVER['PHP_SELF']);
         }
     }
@@ -44,9 +96,11 @@
 switch($action){
     
     //Show Detail Movie
-    case "detailLatest" : detailMovieLatest();
+    case "detailMovie" : detailMovie();
     break;
-    case "detailTopRated" : detailMovieTopRated();
+    case "detailMovieID" : detailMovieID();
+    break;
+    case "homePage" :homePage();
     break;
 
    
@@ -58,8 +112,8 @@ switch($action){
 
 function homePage(){
     //GET Top Rated Movies and Lastest Trailers from DB
-    $topRatedMovies = TopRatedDAO::getMovies();
-    $latestTrailers = LatestTrailersDAO::getMovies();
+    $topRatedMovies = HomePageDao::getMovieCateg("Top Rated");
+    $latestTrailers = HomePageDao::getMovieCateg("Latest Trailers");
     global $msg;
     Page::Header();
     //Parse Top Rated Movies and Lastest Trailers into Home Page
@@ -68,26 +122,27 @@ function homePage(){
   
 }
 
-function detailMovieLatest(){
+function detailMovie(){
     global $msg;
     Page::Header();
-    $selectedMovie = LatestTrailersDAO::getMovie($_GET["MovieID"]);
+    $selectedMovie = HomePageDAO::getMovie($_GET["MovieID"]);
     //Parse Top Rated Movies and Lastest Trailers into Home Page
-    Page::MovieDetail($selectedMovie);
+    Page::MovieDetail($selectedMovie,$msg);
     Page::Footer();
 
 }
-function detailMovieTopRated(){
+
+function detailMovieID(){
     global $msg;
-    
-    
     Page::Header();
-    $selectedMovie = TopRatedDAO::getMovie($_GET["MovieID"]);
+    $selectedMovie = HomePageDAO::getMovie($_POST["movieID"]);
     //Parse Top Rated Movies and Lastest Trailers into Home Page
-    Page::MovieDetail($selectedMovie);
+    Page::MovieDetail($selectedMovie,$msg);
     Page::Footer();
 
 }
+
+
 
 
 

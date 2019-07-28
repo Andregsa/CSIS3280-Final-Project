@@ -1,12 +1,10 @@
-<?php
-class MyMoviesDAO {
-
+<?php 
+class HomePageDAO{
 
     // +----------+------------------+------+-----+---------+----------------+
     // | Field    | Type             | Null | Key | Default | Extra          |
     // +----------+------------------+------+-----+---------+----------------+
     // | MovieID  | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-    // | UserID   | int(11)          | NO   | PRI | NULL    |                |
     // | Title    | char(100)        | YES  |     | NULL    |                |
     // | Year     | year(4)          | YES  |     | NULL    |                |
     // | Runtime  | int(3)           | YES  |     | NULL    |                |
@@ -14,7 +12,7 @@ class MyMoviesDAO {
     // | Plot     | text             | YES  |     | NULL    |                |
     // | Poster   | varchar(1024)    | YES  |     | NULL    |                |
     // | Rating   | float(3,1)       | NO   |     | NULL    |                |
-    // | Category | varchar(50)      | YES  |     | NULL    |                |
+    // | Category | varchar(50)      | NO   |     | NULL    |                |
     // +----------+------------------+------+-----+---------+----------------+
 
     private static $db;
@@ -29,36 +27,51 @@ class MyMoviesDAO {
     static function createMovie(Movies $newMovie): int   {
 
         //Generate the INSERT STATEMENT for the movie;
-        $sqlInsert = "INSERT INTO MyMovies (UserID,Title, Year,Runtime,Genre,Plot,Poster,Rating,Category)
-         VALUES (:userID,:title, :yr, :rn, :g, :plot,:pst,:rat,:cat);";
-
+        $sqlInsert = "INSERT INTO HomePageMovies (Title, Year,Runtime,Genre,Plot,Poster)
+         VALUES (:title, :yr, :rn, :g, :plot,:pst);";
 
         //prepare the query
         self::$db->query($sqlInsert);
 
         //Setup the bind parameters
         self::$db->bind(':title', $newMovie->getTitle());
-        self::$db->bind(':userID', $newMovie->getUserID());
         self::$db->bind(':yr', $newMovie->getYear());
         self::$db->bind(':rn',$newMovie->getRuntime());
         self::$db->bind(':g', $newMovie->getGenre());
         self::$db->bind(':plot', $newMovie->getPlot());
         self::$db->bind(':pst', $newMovie->getPoster());
-        self::$db->bind(':rat', $newMovie->getRating());
-        self::$db->bind(':cat', $newMovie->getCategory());
 
         //Execute the query
         self::$db->execute();
 
         //Return the last inserted ID!!
-       return  self::$db->rowCount();
+       return  self::$db->lastInsertId();
 
     }
 
-    //READ a single Movie
-    static function getMovie(int $id) : MyMovies   {
+    //READ a single Movie by Category
+    static function getMovieCateg($category) {
+            
+        $singleSelect = "SELECT * FROM HomePageMovies WHERE Category = :cat;";
+
+        //Prepare the query
+        self::$db->query($singleSelect);
+
+        //Set the bind parameters
+        self::$db->bind(':cat', $category);
+
+        //Execute the query
+        self::$db->execute();
+
         
-        $singleSelect = "SELECT * FROM MyMovies WHERE MovieID = :id";
+        return self::$db->resultSet();
+    }
+
+
+    //READ a single Movie
+    static function getMovie(int $id) : Movies   {
+        
+        $singleSelect = "SELECT * FROM HomePageMovies WHERE MovieID = :id";
 
         //Prepare the query
         self::$db->query($singleSelect);
@@ -77,8 +90,8 @@ class MyMoviesDAO {
 
     static function getMovies()    {
 
-        $sqlQuery = "SELECT * FROM MyMovies;";
-
+        $sqlQuery = "SELECT * FROM HomePageMovies;";
+       
         //Query!
         self::$db->query($sqlQuery);
 
@@ -90,10 +103,10 @@ class MyMoviesDAO {
 
     }
 //UPDATE 
-static function updateMyMovies(MyMovies $updatedMovie): int   {
+static function updateHomePageMovies(Movies $updatedMovie): int   {
     try {
         //Create the query
-        $updateQuery = "UPDATE MyMovies SET Title = :title, Year = :yr, Runtime = :rn, Genre = :g, Plot = :plot, Poster = :poster
+        $updateQuery = "UPDATE HomePageMovies SET Title = :title, Year = :yr, Runtime = :rn, Genre = :g, Plot = :plot, Poster = :poster
          WHERE MovieID = :id;";
 
         //Query
@@ -130,7 +143,7 @@ static function deleteMovie(int $id): bool {
     try {
 
         //Create the delete query
-        $deleteQuery = "DELETE FROM MyMovies WHERE MovieID = :id";
+        $deleteQuery = "DELETE FROM HomePageMovies WHERE MovieID = :id";
 
         self::$db->query($deleteQuery);
 
@@ -156,6 +169,12 @@ static function deleteMovie(int $id): bool {
     
 }
 
+
+
+
+
+
 }
+
 
 ?>
