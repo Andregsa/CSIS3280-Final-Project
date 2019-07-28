@@ -106,7 +106,7 @@ static function MainPage($topRated,$latestTrailers){ ?>
             if($count==0){
               echo '<div class="Extended">';  
               echo '<div class="movie">';
-              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
               echo  '<div class="rating">';
               echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
               echo     '</div>';
@@ -115,7 +115,7 @@ static function MainPage($topRated,$latestTrailers){ ?>
             }
             elseif($count>0 && $count<5){
               echo '<div class="movie">';
-              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
               echo  '<div class="rating">';
               echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
               echo     '</div>';
@@ -123,7 +123,7 @@ static function MainPage($topRated,$latestTrailers){ ?>
             }
             else{
               echo '<div class="movie">';
-              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
               echo  '<div class="rating">';
               echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
               echo     '</div>';
@@ -138,7 +138,7 @@ static function MainPage($topRated,$latestTrailers){ ?>
             if($count==6){
               echo '<div class="Summary">';  
               echo '<div class="movie">';
-              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
               echo  '<div class="rating">';
               echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
               echo     '</div>';
@@ -147,7 +147,7 @@ static function MainPage($topRated,$latestTrailers){ ?>
             }
             elseif($count>6 && $count<(sizeOf($topRated)-1)){
               echo '<div class="movie">';
-              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
               echo  '<div class="rating">';
               echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
               echo     '</div>';
@@ -155,7 +155,7 @@ static function MainPage($topRated,$latestTrailers){ ?>
             }
             else{
               echo '<div class="movie">';
-              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailLatest&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+              echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
               echo  '<div class="rating">';
               echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
               echo     '</div>';
@@ -194,7 +194,7 @@ $count=0;
       if($count==0){
         echo '<div class="Extended">';  
         echo '<div class="movie">';
-        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
         echo  '<div class="rating">';
         echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
         echo     '</div>';
@@ -203,7 +203,7 @@ $count=0;
       }
       elseif($count>0 && $count<5){
         echo '<div class="movie">';
-        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
         echo  '<div class="rating">';
         echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
         echo     '</div>';
@@ -211,7 +211,7 @@ $count=0;
       }
       else{
         echo '<div class="movie">';
-        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
         echo  '<div class="rating">';
         echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
         echo     '</div>';
@@ -226,7 +226,7 @@ $count=0;
       if($count==6){
         echo '<div class="Summary">';  
         echo '<div class="movie">';
-        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
         echo  '<div class="rating">';
         echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
         echo     '</div>';
@@ -235,7 +235,7 @@ $count=0;
       }
       elseif($count>6 && $count<(sizeOf($topRated)-1)){
         echo '<div class="movie">';
-        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
         echo  '<div class="rating">';
         echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
         echo     '</div>';
@@ -243,7 +243,7 @@ $count=0;
       }
       else{
         echo '<div class="movie">';
-        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailMovie&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
         echo  '<div class="rating">';
         echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
         echo     '</div>';
@@ -348,7 +348,7 @@ static function showCreateUser($errors) { ?>
           <label for="con-password" style="color:white;">Confirm Password</label>
           <input type="password" name="con-password" class="form-control" id="Re-Password" placeholder="Confirm Password">
       </div>
-      <button type="submit" class="btn btn-primary" value="Submit" >Sign Up</button>
+      <button type="submit" class="btn btn-warning"value="Submit" >Sign Up</button>
       </form>
   </div>
   <div id="cont2">
@@ -364,7 +364,7 @@ static function showCreateUser($errors) { ?>
 
 
 
-  static function MovieDetail(Movies $movie){
+  static function MovieDetail(Movies $movie,$msg=""){
 
         echo '<div class="movie_detail">';
         echo '<table id="movie_detail" class="table table-dark">';
@@ -393,7 +393,7 @@ static function showCreateUser($errors) { ?>
         echo  '<td>'.$movie->getPlot().'</td>' ;
         echo '</tr>';
 
-        echo  '<th>'."IMdb Rating:".'</th>' ;
+        echo  '<th>'."IMDb Rating:".'</th>' ;
         echo  '<td>'.$movie->getRating().'</td>' ;
         echo '</tr>';
 
@@ -402,22 +402,24 @@ static function showCreateUser($errors) { ?>
         echo '<form method="POST" ACTION="'. $_SERVER["PHP_SELF"] .'">';
         ?>
 
-        <input type="hidden" name="title" value=<?php echo $movie->getTitle(); ?>>
-        <input type="hidden" name="year" value=<?php echo $movie->getYear(); ?>>
-        <input type="hidden" name="runtime" value=<?php echo $movie->getRuntime(); ?>>
-        <input type="hidden" name="genre" value=<?php echo $movie->getGenre(); ?>>
-        <input type="hidden" name="plot" value=<?php echo $movie->getPlot(); ?>>
-        <input type="hidden" name="rating" value=<?php echo $movie->getRating(); ?>>
-        <input type="hidden" name="poster" value=<?php echo $movie->getPoster(); ?>>
+        <input type="hidden" name="movieID" value="<?php echo $movie->getMovieID(); ?>">
+        <input type="hidden" name="title" value="<?php echo $movie->getTitle(); ?>">
+        <input type="hidden" name="year" value="<?php echo $movie->getYear(); ?>">
+        <input type="hidden" name="runtime" value="<?php echo $movie->getRuntime(); ?>">
+        <input type="hidden" name="genre" value="<?php echo $movie->getGenre(); ?>">
+        <input type="hidden" name="plot" value="<?php echo $movie->getPlot(); ?>">
+        <input type="hidden" name="rating" value="<?php echo $movie->getRating(); ?>">
+        <input type="hidden" name="poster" value="<?php echo $movie->getPoster(); ?>">
+        <input type="hidden" name="category" value="<?php echo $movie->getCategory(); ?>">
 
-        <button type="cancel" class="btn btn-warning" name="cancel">Return</button>
-         <button type="submit" class="btn btn-warning" name="AddToMyMovies">Add To My Movies List</button>
-         <button type="submit" class="btn btn-warning" name="MarkAsWatched">Mark as Watched</button>
+        <button type="cancel" class="btn btn-warning" name="cancel" value="return">Return</button>
+         <button type="submit" class="btn btn-warning" name="type" value="AddToMyMovies">Add To My Movies List</button>
+         <button type="submit" class="btn btn-warning" name="type" value="MarkAsWatched">Mark as Watched</button>
 
         <?php
         echo '<form>';
 
-     
+        echo '<h2 >'. $msg. '</h2>' ;
         
         
         echo '</div>';

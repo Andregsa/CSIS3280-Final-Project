@@ -17,6 +17,7 @@ class Movies
     // +----------+------------------+------+-----+---------+----------------+
     //Attributes
     private $MovieID;
+    private $UserID;
     private $Title;
     private $Year;
     private $Runtime;
@@ -24,11 +25,16 @@ class Movies
     private $Plot;
     private $Poster;
     private $Rating;
+    private $Category;
 
     //Getters
     function getMovieID()
     {
         return $this->MovieID;
+    }
+    function getUserID()
+    {
+        return $this->UserID;
     }
     function getTitle()
     {
@@ -58,11 +64,19 @@ class Movies
     {
         return $this->Rating;
     }
+    function getCategory()
+    {
+        return $this->Category;
+    }
     
     //Setters
     function setMovieID($mid)
     {
         $this->MovieID = $mid;
+    }
+    function setUserID($Uid)
+    {
+        $this->UserID = $Uid;
     }
     function setTitle($title)
     {
@@ -91,6 +105,10 @@ class Movies
     function setRating($newRating)
     {
         $this->Rating = $newRating;
+    }
+    function setCategory($newCat)
+    {
+        $this->Category = $newCat;
     }
 }
 ?>

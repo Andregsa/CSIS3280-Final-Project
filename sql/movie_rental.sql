@@ -47,7 +47,8 @@ CREATE TABLE WatchedMovies
 
 
 
-CREATE TABLE LatestTrailers
+
+CREATE TABLE HomePageMovies
 (  MovieID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
    Title CHAR(100),
    Year  YEAR(4),
@@ -55,18 +56,7 @@ CREATE TABLE LatestTrailers
    Genre TEXT(60),
    Plot TEXT(2000),
    Poster VARCHAR(1024),
-   Rating FLOAT(3,1) NOT NULL
-   
-);
-CREATE TABLE TopRated
-(  MovieID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   Title CHAR(100),
-   Year  YEAR(4),
-   Runtime INT(3),
-   Genre TEXT(60),
-   Plot TEXT(2000),
-   Poster VARCHAR(1024),
-   Rating FLOAT(3,1) NOT NULL
-   
+   Rating FLOAT(3,1) NOT NULL,
+   Category VARCHAR(50) NOT NULL
 );
 

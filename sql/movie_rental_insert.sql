@@ -27,94 +27,93 @@ INSERT INTO MyMovies VALUES
   
 
 
-  INSERT INTO LatestTrailers VALUES
-   (1, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
-  (2, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
-  (3, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
-  to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
-  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8),
-  (4, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
-  (5, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
-  (6, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
-  to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
-  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8),
-    (7, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
-  (8, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
-  (9, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
-  to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
-  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8),
-  (10, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
-  (11, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
-  (12, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
-  to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
-  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8);
 
-    INSERT INTO TopRated VALUES
+  INSERT INTO HomePageMovies VALUES
   (1, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
   Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
   the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8,"Top Rated" ),
   (2, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
   Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
   the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8, "Latest Trailers"),
   (3, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
   to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
-  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8),
+  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8, "Latest Trailers"),
   (4, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
   Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
   the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8,"Top Rated"  ),
   (5, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
   Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
   the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ,"Top Rated" ),
   (6, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
   to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
-  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8),
+  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8,"Top Rated" ),
     (7, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
   Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
   the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8,"Top Rated"  ),
   (8, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
   Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
   the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8,"Top Rated"  ),
   (9, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
   to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
-  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8),
+  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8, "Latest Trailers"),
   (10, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
   Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
   the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8, "Latest Trailers" ),
   (11, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
   Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
   the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ),
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8, "Latest Trailers" ),
   (12, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
   to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
-  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8);
+  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8, "Latest Trailers"),
+ (13, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
+  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
+  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8,"Top Rated" ),
+  (14, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
+  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
+  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8, "Latest Trailers"),
+  (15, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
+  to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
+  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8, "Latest Trailers"),
+  (16, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
+  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
+  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8,"Top Rated"  ),
+  (17, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
+  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
+  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ,"Top Rated" ),
+  (18, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
+  to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
+  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8,"Top Rated" ),
+    (19, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
+  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
+  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8,"Top Rated"  ),
+  (20, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
+  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
+  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8,"Top Rated"  ),
+  (21, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
+  to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
+  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8, "Latest Trailers"),
+  (22, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
+  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
+  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8, "Latest Trailers" ),
+  (23, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
+  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
+  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
+  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8, "Latest Trailers" ),
+  (24, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
+  to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
+  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8, "Latest Trailers");
