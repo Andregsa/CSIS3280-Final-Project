@@ -3,7 +3,8 @@
     require_once("inc/Utilities/LoginManager.class.php");
 
 
-
+    
+    LoginManager::verifyLogin();
     Page::Header();
     Page::aboutPage();
     Page::Footer();

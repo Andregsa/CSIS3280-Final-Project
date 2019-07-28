@@ -71,8 +71,8 @@ class Page{
       <div id="search">
         <form action="#" method="get" accept-charset="utf-8">
           <label for="search-field">SEARCH</label>
-          <input type="text" name="search field" placeholder="Search a Movie" id="search-field" class="blink search-field"  />
-          <input type="text" name="year field" placeholder="Enter Year (Optional)" id="search-field" class="blink search-field"  />
+          <input type="text" name="searchField" placeholder="Search a Movie" id="search-field" class="blink search-field"  />
+          <input type="text" name="yearField" placeholder="Enter Year (Optional)" id="search-field" class="blink search-field"  />
           <input type="submit" value="GO!" class="search-button" />
         </form>
       
@@ -262,6 +262,16 @@ $count=0;
    
 <?php }
 
+    static function displayMovies($movieObjs){
+      foreach($movieObjs as $movie){
+        echo '<div class="movie">';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+        echo  '<div class="rating">';
+        //echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
+        echo     '</div>';
+        echo '</div>';    
+      }
+    }
 
     static function Footer(){ ?>
         <div id="footer">

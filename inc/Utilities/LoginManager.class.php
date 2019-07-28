@@ -17,8 +17,13 @@ class LoginManager  {
         {
         
             session_destroy();
-            $fileName = "MovieHunter-Home.php";
-            if(strpos($_SERVER['PHP_SELF'], $fileName) == true){
+            
+            
+            $pageName = "MovieHunter-Home.php";
+            $pageName2 = "About.php";
+
+            //Allows the the pages to not get redirected to the homepage if there's no session.
+            if(strpos($_SERVER['PHP_SELF'], $pageName) == true || strpos($_SERVER['PHP_SELF'], $pageName2) == true) {
 
             } else {
                 header('Location: '."MovieHunter-Home.php");

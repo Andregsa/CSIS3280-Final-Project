@@ -60,7 +60,7 @@ class Movies
     }
     
     //Setters
-    function setMovieID($Mid)
+    function setMovieID($mid)
     {
         $this->MovieID = $mid;
     }

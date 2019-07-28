@@ -7,6 +7,7 @@ define("DB_PASS", "");
 define("DB_NAME","movie_hunter");
 
 //API KEY:
+define("OMDB_KEY","&apikey=c44d978e");
 //http://www.omdbapi.com/?apikey=c44d978e
 
 ?>
