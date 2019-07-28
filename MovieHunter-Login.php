@@ -15,6 +15,7 @@
     $msg ="";
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
         $errors = Validation::validateLogin($_POST);
         if(empty($errors)) {
             try {

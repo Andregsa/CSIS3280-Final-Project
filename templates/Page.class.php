@@ -262,16 +262,42 @@ $count=0;
    
 <?php }
 
-    static function displayMovies($movieObjs){
-      foreach($movieObjs as $movie){
-        echo '<div class="movie">';
-        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie->getMovieID().'"><span class="name">'.$movie->getTitle().'<BR>'.$movie->getYear().'</span></a></span> <img src="'.$movie->getPoster().'" alt="Poster Missing" /></div>';
+    static function displayMovies($movie, $number, $search){
+      $activePage = basename($_SERVER['PHP_SELF'], ".php");
+      echo '<div id="displaytable">';
+      echo '<table>';
+      echo '<tr>';
+ 
+      $rowNum = 5;
+      for($i = 0; $i < count($movie); $i += 5){
+        echo '<tr>';
+        $count = 0;
+        while($count < $rowNum){
+          echo '<td>';
+        echo '<class="movie">';
+        echo  '<div class="movie-image"> <span class="play"><a href="'.$_SERVER["PHP_SELF"].'?action=detailTopRated&MovieID='.$movie[$i + $count]->getMovieID().'"><span class="name">'.$movie[$i + $count]->getTitle().'<BR>'.$movie[$i + $count]->getYear().'</span></a></span> <img src="'.$movie[$i + $count]->getPoster().'" alt="Poster Missing" /></div>';
         echo  '<div class="rating">';
         //echo    '<p>IMDb RATING '.$movie->getRating().'</p>';
         echo     '</div>';
-        echo '</div>';    
+        echo '</div>';  
+        echo '</td>'; 
+          
+          $count += 1;
+        }
+        echo '</tr>';
       }
-    }
+    
+      echo '</table>';
+      echo '</div>'
+      ?> 
+      <div class="pagechange">
+      <ul class="pagechangeul">
+      <li id="pageprevious" class="pagechangeli"><a class="pagechangeli" href="MovieHunter-Search.php?page=previous&number=<?php echo $number;?>&searchField=<?php echo $search;?>">Previous</a></li>
+      <li id="pagenumber"class="pagechangeli"><?php echo $number;?></li>
+      <li id="pagenext"class="pagechangeli"><a class="pagechangeli" href="MovieHunter-Search.php?page=next&number=<?php echo $number;?>&searchField=<?php echo $search;?>">Next</a></li>
+      </ul>
+      </div>
+    <?php }
 
     static function Footer(){ ?>
         <div id="footer">

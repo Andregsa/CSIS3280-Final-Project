@@ -455,6 +455,42 @@ h1#logo a {
 #rating{
 	color:rgb(242, 162, 35);
 }
- #movie_detail td{
+#movie_detail td{
 	text-align: justify;
+}
+
+.pagechange	{
+	width: 100%;
+	
+	list-style: none;
+	
+}
+
+.pagechangeul	{
+	list-style: none;
+	display: inline;
+}
+
+.pagechangeli {
+color: yellow;
+display: inline-block;
+font-size: 18px;
+
+}
+#pagenext {
+float: right;
+margin-right: 3.5%;
+
+}
+
+#pagenumber {
+margin-left: 38%;
+
+}
+
+#pageprevious {
+margin-left: 5%;
+}
+#displaytable {
+	margin-left: 5%;
 }

@@ -13,43 +13,87 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
     Page::Header();
     UserDAO::initialize();
     
+    if(isset($_GET['previous'])){
+        
+    }
+    
+    if(isset($_GET['next'])){
+        
+    }
+
+   
+    $number = 1;
+
+    
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         
         if(!empty($_GET)){
-            var_dump("lolnotempt");
+            
             if(isset($_GET['searchField']) || isset($_GET['yearField'])){
-                var_dump("hi");
-                $link = $link."?s=".$_GET['searchField'].OMDB_KEY;
+                
+                if(isset($_GET['page'])){
+
+                    if($_GET['page'] == "next"){
+                        $number = intval($_GET['number']);
+                        $number += 1;
+                        
+                    }
+                    if($_GET['page'] == "previouss"){
+                        $number = intval($_GET['number']);
+                        $number -= 1;
+                    } 
+                   
+                }
+                
+                //Keeps the page at 1 if someone goes to a previous page at page 1;
+                if($number < 1){
+                    $number == 1;
+                }
+
+                $link = $link."?s=".$_GET['searchField']."&page=".$number.OMDB_KEY;
                 $link = file_get_contents($link,false);
                 $link = json_decode($link);
-                var_dump($link);
+               
 
                 $movies = array();
                 
 
-
-                foreach($link as $slink){
-                    foreach($slink as $std){
-                        var_dump($std);
-                        $movie = new Movies();
+                try{
+                    foreach($link as $slink){
                         
-                        $movie->setTitle($std->Title);
-                        $movie->setPoster($std->Poster);
-                        $movie->setMovieID($std->imdbID);
+                        if(gettype($slink) == 'array'){
 
-                    $movies[] = $movie;
+                            foreach($slink as $std){
+                                if(get_class($std) == 'stdClass'){
+                                    $movie = new Movies();
+                                    $movie->setTitle($std->Title);
+                                    $movie->setPoster($std->Poster);
+                                    $movie->setMovieID($std->imdbID);
+                                    
+                                     $movies[] = $movie;
+    
+                                }
+                                
+                                
+        
+                            }
+                        }
+                        
+                        
                     }
                     
-                }
-                var_dump($movies);
+                } catch (exception $ex){
 
-                Page::displayMovies($movies);
+                }
+                
+                //var_dump($movies);
+                Page::displayMovies($movies,$number,$_GET['searchField']);
                 Page::Footer();
                 
-                var_dump($link);
+               
             }
         }
     }
 
-
+    
 ?>
