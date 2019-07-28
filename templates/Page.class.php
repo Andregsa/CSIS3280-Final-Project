@@ -303,7 +303,7 @@ $count=0;
 
     static function Footer(){ ?>
         <div id="footer">
-        <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
+        <p class="lf">Copyright &copy; 2019 <a href="#">Movie Hunter</a> - All Rights Reserved</p>
         <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
         <div style="clear:both;"></div>
       </div>
@@ -531,19 +531,34 @@ static function showCreateUser($errors) { ?>
       {?>
       <table class="table table-dark">
       <?php
+
+      echo '<thead style="text-align:center; font-size:1.2em;">';
+      echo '<tr>';
+      echo '<th>'."Title".'</th>';
+      echo '<th>'."Year".'</th>';
+      echo '<th>'."RunTime".'</th>';
+      echo '<th>'."Genre".'</th>';
+      echo '<th>'."Plot".'</th>';
+      echo '<th>'."IMDb Rating".'</th>';
+      echo '<th>'."Category".'</th>';
+      echo '</tr>';
+      echo '</thead>';
+
+      echo '<tbody>';
       foreach($mm as  $movie)
       {
+        
         echo '<tr>';
-        echo '<td>'.$movie->getMovieID().'</td>';
         echo '<td>'.$movie->getTitle().'</td>';
         echo '<td>'.$movie->getYear().'</td>';
-        echo '<td>'.$movie->getRuntime().'</td>';
+        echo '<td>'.$movie->getRuntime()." Min.".'</td>';
         echo '<td>'.$movie->getGenre().'</td>';
         echo '<td>'.$movie->getPlot().'</td>';
         echo '<td>'.$movie->getRating().'</td>';
         echo '<td>'.$movie->getCategory().'</td>';
         echo '</tr>';
       }
+      echo '</tbody>';
       ?>
       </table>
       <?php

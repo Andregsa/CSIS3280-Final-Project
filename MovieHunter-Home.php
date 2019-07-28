@@ -158,6 +158,8 @@ function detailMovie(){
 
 }
 
+//This function is to return to Movie Detail page after the user add the movie to Mylist.
+//We get the MovieId from the POST method and use to display the same movie again.
 function detailMovieID(){
     global $msg;
     Page::Header();
