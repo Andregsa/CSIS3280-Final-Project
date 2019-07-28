@@ -56,7 +56,7 @@ class MyMoviesDAO {
     }
 
     //READ a single Movie
-    static function getMovie(int $id) : MyMovies   {
+    static function getMovie(int $id)   {
         
         $singleSelect = "SELECT * FROM MyMovies WHERE MovieID = :id";
 
@@ -73,7 +73,24 @@ class MyMoviesDAO {
         return self::$db->singleResult();
 
     }
+    static function getMovieByUser(int $id)   {
+        
+        $singleSelect = "SELECT * FROM MyMovies WHERE UserID = :id";
 
+        //Prepare the query
+        self::$db->query($singleSelect);
+
+        //Set the bind parameters
+        self::$db->bind(':id', $id);
+
+        //Execute the query
+        self::$db->execute();
+
+        //Get the row
+        return self::$db->resultSet();
+
+    }
+    
 
     static function getMovies()    {
 

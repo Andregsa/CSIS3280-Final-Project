@@ -15,14 +15,15 @@ class WatchedMoviesDAO    {
     static function createWMovies(WatchedMovies $wm): int   {
 
         //Generate the INSERT STATEMENT for the WatchedMovies;
-        $sqlInsert = "INSERT INTO WatchedMovies (MovieID, Date, Rate)
-         VALUES (:mid, :d, :r);";
+        $sqlInsert = "INSERT INTO WatchedMovies (MovieID, UserID, Date, Rate)
+         VALUES (:mid,:uid, :d, :r);";
 
         //prepare the query
         self::$db->query($sqlInsert);
 
         //Setup the bind parameters
         self::$db->bind(':mid', $wm->getMovieID());
+        self::$db->bind(':mid', $wm->getUserID());
         self::$db->bind(':d', $wm->getDates());
         self::$db->bind(':r', $wm->getRate());
 
@@ -67,20 +68,35 @@ class WatchedMoviesDAO    {
         return self::$db->resultSet();
 
     }
+    static function getWMovieByUser(int $id)   {
+        
+        $singleSelect = "SELECT * FROM WatchedMovies WHERE UserID = :id";
+
+        //Prepare the query
+        self::$db->query($singleSelect);
+
+        //Set the bind parameters
+        self::$db->bind(':id', $id);
+
+        //Execute the query
+        self::$db->execute();
+
+        //Get the row
+        return self::$db->resultSet();
+
+    }
 
     //UPDATE 
     static function updateWatchedMovies(WatchedMovies $updateWMovies): int   {
         try {
             //Create the query
-            $updateQuery = "UPDATE WatchedMovies SET MovieID = :mid, Date = :d ,Rate = :r WHERE WatchedID = :id;";
+            $updateQuery = "UPDATE WatchedMovies SET Rate=:r WHERE WatchedID = :id;";
 
             //Query
             self::$db->query($updateQuery);
 
             //Bind
             self::$db->bind(':id',$updateWMovies->getWatchedID());
-            self::$db->bind(':mid',$updateWMovies->getMovieID());
-            self::$db->bind(':d', $updateWMovies->getDate());
             self::$db->bind(':r', $updateWMovies->getRate());
             
             //Execute the query

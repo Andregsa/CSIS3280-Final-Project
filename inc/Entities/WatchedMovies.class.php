@@ -10,6 +10,7 @@ class WatchedMovies
 // +---------+------------------+------+-----+---------+----------------+
     //Attributes
     private $WatchedID;
+    private $UserID;
     private $MovieID;
     private $Date;
     private $Rate; //0-10.0 Stars
@@ -19,6 +20,10 @@ class WatchedMovies
     function getWatchedID()
     {
         return $this->WatchedID;
+    }
+    function getUserID()
+    {
+        return $this->UserID;
     }
     function getMovieID()
     {
@@ -45,6 +50,10 @@ class WatchedMovies
     function setDate($d)
     {
         $this->Date = $d;
+    }
+    function setUserID($uid)
+    {
+        $this->UserID = $uid;
     }
     function setRate($r)
     {

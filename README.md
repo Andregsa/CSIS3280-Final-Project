@@ -8,11 +8,11 @@ Requirements:
 
 
 Anusha
-<b>COMMENTS: MyAccount page currently working on default userid. Once LogIn page works, needs to be replaced by current userid</b>  //ANDRE's COMMENT: IT'S WORKING NOW, please update this comment...
+Created MyMovies list -- need to add option to delete/edit.
+Make the Mark as Watched button work
 
 Andre
-Make the Mark as Watched button work
-Create MyMovies List and MyWatched Movies  List
+Create MyWatched Movies  List
 Admin Page to edit the HomePage movies
 Schedule Report Gantt Chart
 

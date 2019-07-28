@@ -3,6 +3,8 @@ require_once("inc/config.inc.php");
 require_once("inc/Utilities/PDOAgent.class.php");
 require_once("inc/Utilities/DAO/UserDAO.class.php");
 require_once("inc/Entities/User.class.php");
+require_once("inc/Utilities/DAO/MyMoviesDAO.class.php");
+require_once("inc/Entities/Movies.class.php");
 UserDAO::initialize();
 
 class Page{
@@ -31,8 +33,8 @@ class Page{
     <div id="navigation">
       <ul>
       <li><a class="<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-Home.php">HOME</a></li>
-        <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="#">MY MOVIES</a></li>
-        <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="#">MY WATCHED MOVIES</a></li>
+        <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-MyMovies.php">MY MOVIES</a></li>
+        <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-WMovies.php">MY WATCHED MOVIES</a></li>
         <?php if ($mySession == true){ ?>
           <li><a class= "<?= ($activePage == 'index') ? 'active':''; ?>" href="MovieHunter-Account.php">MY ACCOUNT</a></li>
       <?php } else { ?>
@@ -523,6 +525,43 @@ static function showCreateUser($errors) { ?>
       all you movie buffs out there!
       </p></div>
       
+      <?php
+      }
+      static function mymovies($mm)
+      {?>
+      <table class="table table-dark">
+      <?php
+      foreach($mm as  $movie)
+      {
+        echo '<tr>';
+        echo '<td>'.$movie->getMovieID().'</td>';
+        echo '<td>'.$movie->getTitle().'</td>';
+        echo '<td>'.$movie->getYear().'</td>';
+        echo '<td>'.$movie->getRuntime().'</td>';
+        echo '<td>'.$movie->getGenre().'</td>';
+        echo '<td>'.$movie->getPlot().'</td>';
+        echo '<td>'.$movie->getRating().'</td>';
+        echo '<td>'.$movie->getCategory().'</td>';
+        echo '</tr>';
+      }
+      ?>
+      </table>
+      <?php
+      }
+      Static function wmovies($Wm)
+      {?>
+      <table class="table table-dark">
+      <?php
+      foreach($Wm as  $movie)
+      {
+        echo '<tr>';
+        echo '<td>'.$movie->getMovieID().'</td>';
+        echo '<td>'.$movie->getDate().'</td>';
+        echo '<td>'.$movie->getRate().'</td>';
+        echo '</tr>';
+      }
+      ?>
+      </table>
       <?php
       }
 
