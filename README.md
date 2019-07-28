@@ -8,17 +8,22 @@ Requirements:
 
 
 Anusha
-<b>COMMENTS: MyAccount page currently working on default userid. Once LogIn page works, needs to be replaced by current userid</b>
+<b>COMMENTS: MyAccount page currently working on default userid. Once LogIn page works, needs to be replaced by current userid</b>  //ANDRE's COMMENT: IT'S WORKING NOW, please update this comment...
 
 Andre
-Create Selected Movie Page
-MyMovies Page
-Try to expand movies in the Home page
+Make the Mark as Watched button work
+Create MyMovies List and MyWatched Movies  List
+Admin Page to edit the HomePage movies
 Schedule Report Gantt Chart
 
 ADAM
 Validation
 REstclient
+ANDRE'S COMMENT:
+"
+When you click about the session is lost..
+I think you need to apply the "  <?php if ($mySession == true){ ?>" thing in the About page"
+
 User Manual
 
 

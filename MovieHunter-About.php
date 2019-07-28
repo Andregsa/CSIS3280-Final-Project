@@ -1,5 +1,6 @@
 <?php
     require_once("templates/Page.class.php");
+    require_once("inc/Utilities/LoginManager.class.php");
 
 
 

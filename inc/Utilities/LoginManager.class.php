@@ -17,10 +17,29 @@ class LoginManager  {
         {
         
             session_destroy();
-            header('Location: '."MovieHunter-Login.php");
+            $fileName = "MovieHunter-Home.php";
+            if(strpos($_SERVER['PHP_SELF'], $fileName) == true){
+
+            } else {
+                header('Location: '."MovieHunter-Home.php");
+            }
+            
+            
             return false;
 
         }
+    }
+
+    static function verifySession(){
+        if(isset($_SESSION['logged'])){
+            if($_SESSION['logged'] != null){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+        
     }
         
     

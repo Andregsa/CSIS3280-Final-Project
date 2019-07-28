@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD:inc/Utilities/WatchedMoviesDAO.class.php
 class WatchedMoviesDAO    {
-=======
-class WatchedDAO    {
->>>>>>> e1d61cb761f6fc77ac97bd0d50f2fc996f6e447f:inc/Utilities/WatchedDAO.class.php
 
     private static $db;
 

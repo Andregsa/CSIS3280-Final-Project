@@ -2,50 +2,56 @@
 class MyMoviesDAO {
 
 
-    // +---------+------------------+------+-----+---------+----------------+
-    // | Field   | Type             | Null | Key | Default | Extra          |
-    // +---------+------------------+------+-----+---------+----------------+
-    // | MovieID | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-    // | Title   | char(100)        | YES  |     | NULL    |                |
-    // | Year    | year(4)          | YES  |     | NULL    |                |
-    // | Runtime | int(3)           | YES  |     | NULL    |                |
-    // | Genre   | tinytext         | YES  |     | NULL    |                |
-    // | Plot    | text             | YES  |     | NULL    |                |
-    // | Poster  | varchar(1024)    | YES  |     | NULL    |                |
-    // | Rating  | float(3,1)       | NO   |     | NULL    |                |
-    // +---------+------------------+------+-----+---------+----------------+
+    // +----------+------------------+------+-----+---------+----------------+
+    // | Field    | Type             | Null | Key | Default | Extra          |
+    // +----------+------------------+------+-----+---------+----------------+
+    // | MovieID  | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+    // | UserID   | int(11)          | NO   | PRI | NULL    |                |
+    // | Title    | char(100)        | YES  |     | NULL    |                |
+    // | Year     | year(4)          | YES  |     | NULL    |                |
+    // | Runtime  | int(3)           | YES  |     | NULL    |                |
+    // | Genre    | tinytext         | YES  |     | NULL    |                |
+    // | Plot     | text             | YES  |     | NULL    |                |
+    // | Poster   | varchar(1024)    | YES  |     | NULL    |                |
+    // | Rating   | float(3,1)       | NO   |     | NULL    |                |
+    // | Category | varchar(50)      | YES  |     | NULL    |                |
+    // +----------+------------------+------+-----+---------+----------------+
 
     private static $db;
 
     //Initialize DAO class
     static function init()  {
         
-        self::$db = new PDOAgent("MyMovies");
+        self::$db = new PDOAgent("Movies");
 
     }
     //CREATE a single Movie
-    static function createMovie(MyMovies $newMovie): int   {
+    static function createMovie(Movies $newMovie): int   {
 
         //Generate the INSERT STATEMENT for the movie;
-        $sqlInsert = "INSERT INTO MyMovies (Title, Year,Runtime,Genre,Plot,Poster)
-         VALUES (:title, :yr, :rn, :g, :plot,:pst);";
+        $sqlInsert = "INSERT INTO MyMovies (UserID,Title, Year,Runtime,Genre,Plot,Poster,Rating,Category)
+         VALUES (:userID,:title, :yr, :rn, :g, :plot,:pst,:rat,:cat);";
+
 
         //prepare the query
         self::$db->query($sqlInsert);
 
         //Setup the bind parameters
         self::$db->bind(':title', $newMovie->getTitle());
+        self::$db->bind(':userID', $newMovie->getUserID());
         self::$db->bind(':yr', $newMovie->getYear());
         self::$db->bind(':rn',$newMovie->getRuntime());
         self::$db->bind(':g', $newMovie->getGenre());
         self::$db->bind(':plot', $newMovie->getPlot());
         self::$db->bind(':pst', $newMovie->getPoster());
+        self::$db->bind(':rat', $newMovie->getRating());
+        self::$db->bind(':cat', $newMovie->getCategory());
 
         //Execute the query
         self::$db->execute();
 
         //Return the last inserted ID!!
-       return  self::$db->lastInsertId();
+       return  self::$db->rowCount();
 
     }
 

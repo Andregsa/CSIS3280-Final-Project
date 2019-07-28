@@ -394,7 +394,7 @@ h1#logo a {
 	width: 100%;
 	padding: 0px 0px 0px 10px;
 	font-size: 15px;
-	color:rgb(117, 0, 0);
+	color:rgb(242, 162, 35);
 	text-align: left;
 }
 .errorLine	{
@@ -413,4 +413,48 @@ h1#logo a {
 	float:left;
 }
 
+#textinfo {
+	margin-top: 100%;
+	height: 20px;
+	
+	
+	text-align: right;
 
+}
+
+#inform {
+	
+	
+	text-align: right;
+	width: 200px;
+	height: 10px;
+	padding-bottom: 10px;
+	font-size: 15px;
+	
+	
+	margin-top: 25px;
+	color: white;	
+	font-family: Arial, Helvetica, sans-serif;
+	
+
+	
+	
+	
+	
+}
+
+#positioning {
+	
+	height: 0px;
+	float: right;
+	
+	
+}
+
+
+#rating{
+	color:rgb(242, 162, 35);
+}
+ #movie_detail td{
+	text-align: justify;
+}

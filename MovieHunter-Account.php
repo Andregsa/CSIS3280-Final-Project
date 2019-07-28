@@ -3,8 +3,9 @@
     require_once("inc/config.inc.php");
     require_once("inc/Entities/User.class.php");
     require_once("inc/Utilities/PDOAgent.class.php");
-    require_once("inc/Utilities/UserDAO.class.php");
-    session_start();
+    require_once("inc/Utilities/DAO/UserDAO.class.php");
+    require_once("inc/Utilities/LoginManager.class.php");
+    LoginManager::verifyLogin();
     Page::Header();
     UserDAO::initialize();
     //need to get id of current user
@@ -14,6 +15,7 @@
         //Perform the Action
         if ($_GET["action"] == "delete")  {
             UserDAO::deleteUser($_GET["id"]);
+            $_SESSION['logged'] = null;
             header('Location: '.$_SERVER['PHP_SELF']);
         }
         else 
@@ -25,6 +27,7 @@
     
     }
     //Check for post data
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {     
         if(isset($_POST['saveEdits']))
@@ -45,11 +48,18 @@
             UserDAO::updateUser($nu);
             header('Location: '.$_SERVER['PHP_SELF']);
         }
-        if(isset($_POST['logout']))
+        if(isset($_POST['loggedOut']))
         {
+<<<<<<< HEAD
             //NOT WORKING
             //$_SESSION['logged'] = null;
             //header('Location:MovieHunter-Login.php');
+=======
+            $_SESSION['logged'] = null;
+            
+            header('Location: '.$_SERVER['PHP_SELF']);
+            
+>>>>>>> fd778d547f39a587763c165cd4ed3402e18755c7
         }
     }
 

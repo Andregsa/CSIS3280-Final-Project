@@ -1,19 +1,23 @@
 <?php
 class Movies
 {
-//     +---------+------------------+------+-----+---------+----------------+
-// | Field   | Type             | Null | Key | Default | Extra          |
-// +---------+------------------+------+-----+---------+----------------+
-// | MovieID | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-// | Title   | char(100)        | YES  |     | NULL    |                |
-// | Year    | year(4)          | YES  |     | NULL    |                |
-// | Runtime | int(3)           | YES  |     | NULL    |                |
-// | Genre   | tinytext         | YES  |     | NULL    |                |
-// | Plot    | text             | YES  |     | NULL    |                |
-// | Poster  | varchar(1024)    | YES  |     | NULL    |                |
-// +---------+------------------+------+-----+---------+----------------+
+    // +----------+------------------+------+-----+---------+----------------+
+    // | Field    | Type             | Null | Key | Default | Extra          |
+    // +----------+------------------+------+-----+---------+----------------+
+    // | MovieID  | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+    // | UserID   | int(11)          | NO   | PRI | NULL    |                |
+    // | Title    | char(100)        | YES  |     | NULL    |                |
+    // | Year     | year(4)          | YES  |     | NULL    |                |
+    // | Runtime  | int(3)           | YES  |     | NULL    |                |
+    // | Genre    | tinytext         | YES  |     | NULL    |                |
+    // | Plot     | text             | YES  |     | NULL    |                |
+    // | Poster   | varchar(1024)    | YES  |     | NULL    |                |
+    // | Rating   | float(3,1)       | NO   |     | NULL    |                |
+    // | Category | varchar(50)      | YES  |     | NULL    |                |
+    // +----------+------------------+------+-----+---------+----------------+
     //Attributes
     private $MovieID;
+    private $UserID;
     private $Title;
     private $Year;
     private $Runtime;
@@ -21,11 +25,16 @@ class Movies
     private $Plot;
     private $Poster;
     private $Rating;
+    private $Category;
 
     //Getters
     function getMovieID()
     {
         return $this->MovieID;
+    }
+    function getUserID()
+    {
+        return $this->UserID;
     }
     function getTitle()
     {
@@ -55,11 +64,19 @@ class Movies
     {
         return $this->Rating;
     }
+    function getCategory()
+    {
+        return $this->Category;
+    }
     
     //Setters
-    function setMovieID($Mid)
+    function setMovieID($mid)
     {
         $this->MovieID = $mid;
+    }
+    function setUserID($Uid)
+    {
+        $this->UserID = $Uid;
     }
     function setTitle($title)
     {
@@ -88,6 +105,10 @@ class Movies
     function setRating($newRating)
     {
         $this->Rating = $newRating;
+    }
+    function setCategory($newCat)
+    {
+        $this->Category = $newCat;
     }
 }
 ?>
