@@ -535,20 +535,22 @@ static function showCreateUser($errors) { ?>
       
       <?php
       }
-      static function mymovies($mm)
+      static function mymovies($mm, $lastclicked)
       {?>
       <table class="table table-dark">
       <?php
-
+      if($lastclicked != ""){
+        $lastclicked = "&last=".$lastclicked;
+      }
       echo '<thead style="text-align:center; font-size:1.2em;">';
       echo '<tr>';
-      echo '<th>'."Title".'</th>';
-      echo '<th>'."Year".'</th>';
-      echo '<th>'."RunTime".'</th>';
-      echo '<th>'."Genre".'</th>';
-      echo '<th>'."Plot".'</th>';
-      echo '<th>'."IMDb Rating".'</th>';
-      echo '<th>'."Category".'</th>';
+      echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=title'.$lastclicked.'">'."Title".'</th>';
+      echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=year'.$lastclicked.'">'."Year".'</th>';
+      echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=runtime'.$lastclicked.'">'."RunTime".'</th>';
+      echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=genre'.$lastclicked.'">'."Genre".'</th>';
+      echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=plot'.$lastclicked.'">'."Plot".'</th>';
+      echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=rating'.$lastclicked.'">'."Rating".'</th>';
+      echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=category'.$lastclicked.'">'."Category".'</th>';
       echo '</tr>';
       echo '</thead>';
 
@@ -563,7 +565,18 @@ static function showCreateUser($errors) { ?>
         echo '<td>'.$movie->getGenre().'</td>';
         echo '<td>'.$movie->getPlot().'</td>';
         echo '<td>'.$movie->getRating().'</td>';
-        echo '<td>'.$movie->getCategory().'</td>';
+        echo '<td>'.$movie->getCategory().'<br><ul style="list-style:none;display:inline;">
+        <li style="width:25px;height:25px;display:inline;">
+        <a href="delete.com">
+        <img class="icons" style="width:25px;height:25px;display:inline;"src="templates/css/images/icons-edit.png" alt="not av">
+        </li>
+        
+        <li style="width:25px;height:25px;display:inline;">
+        <a href="delete.com">
+        <img class="icons" style="width:25px;height:25px;display:inline;" src="templates/css/images/icons-delete.png" alt="not av">
+        </li>
+
+        </ul></td>';
         echo '</tr>';
       }
       echo '</tbody>';
