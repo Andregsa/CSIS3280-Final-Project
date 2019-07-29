@@ -19,10 +19,7 @@ Schedule Report Gantt Chart
 ADAM
 Validation
 REstclient
-ANDRE'S COMMENT:
-"
-When you click about the session is lost..
-I think you need to apply the "  <?php if ($mySession == true){ ?>" thing in the About page"
+
 
 User Manual
 
@@ -30,6 +27,12 @@ User Manual
 MISSING THE STATISTICS
 MESSAGES 
 ERROR LOGS(GET THE ERRORS FROM THE WEB SERVER)!
+ADD LOGO TO THE TAB (LAB 10)
+SORT MYMOCIES LIST BY YEAR & CATEGORY & TITLE
+
+
+
+
 
 //REFERENCES
 [1]Using Rest APIs in a Web application
@@ -41,3 +44,5 @@ http://www.omdbapi.com/
 
 [3] Movie Hunter HTML TEMPLATE
 https://www.free-css.com/free-css-templates/page138/moviehunter
+
+https://www.php.net/manual
