@@ -270,10 +270,10 @@ h1#logo a {
 }
 .movie span.name {
 	font-weight:bold;
-	color:#fff;
+	color:#f2a223;
 	font-size:14px;
 	text-align:center;
-	padding-top:160px;
+	padding-top:10px;
 	display:block;
 }
 .box .last {
