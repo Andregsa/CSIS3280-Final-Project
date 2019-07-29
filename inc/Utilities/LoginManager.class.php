@@ -21,9 +21,10 @@ class LoginManager  {
             
             $pageName = "MovieHunter-Home.php";
             $pageName2 = "About.php";
+            $pageName3 = "Search.php";
 
             //Allows the the pages to not get redirected to the homepage if there's no session.
-            if(strpos($_SERVER['PHP_SELF'], $pageName) == true || strpos($_SERVER['PHP_SELF'], $pageName2) == true) {
+            if(strpos($_SERVER['PHP_SELF'], $pageName) == true || strpos($_SERVER['PHP_SELF'], $pageName2) == true || strpos($_SERVER['PHP_SELF'], $pageName3) == true) {
 
             } else {
                 header('Location: '."MovieHunter-Home.php");

@@ -63,14 +63,25 @@
                     $myMovies->setUserID($user->getUserID());
 
                     //VERIFY IF THE MOVIE IS ALREADY IN THE USER'S LIST!!!!
-
-                    $result = MyMoviesDAO::createMovie($myMovies);
-
-                    if($result>0){
-                        $msg="Movie Added to Your List";
-                        $action="detailMovieID";
+                    $allMovies = MyMoviesDAO::getMovieByUser($user->getUserID());
+                    $sameMovie = false;
+                    foreach($allMovies as $movie){
+                       
+                        if($movie->getTitle() == $myMovies->getTitle() && $movie->getYear() == $myMovies->getYear()){
+                            $sameMovie = true;
+                        }
+                        
                     }
-
+                    if ($sameMovie == true){
+                        $msg="Movie Already Added";
+                        $action="detailMovieID";
+                    } else {
+                        $result = MyMoviesDAO::createMovie($myMovies);
+                        if($result>0){
+                            $msg="Movie Added to Your List";
+                            $action="detailMovieID";
+                        }
+                    }
                 }
             }
             else if($_POST["type"]=="MarkAsWatched"){

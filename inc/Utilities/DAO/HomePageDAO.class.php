@@ -49,6 +49,24 @@ class HomePageDAO{
 
     }
 
+    static function getMovieByUser(int $id)   {
+        
+        $singleSelect = "SELECT * FROM HomePageMovies WHERE UserID = :id";
+
+        //Prepare the query
+        self::$db->query($singleSelect);
+
+        //Set the bind parameters
+        self::$db->bind(':id', $id);
+
+        //Execute the query
+        self::$db->execute();
+
+        //Get the row
+        return self::$db->resultSet();
+
+    }
+
     //READ a single Movie by Category
     static function getMovieCateg($category) {
             
