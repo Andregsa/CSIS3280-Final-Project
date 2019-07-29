@@ -82,12 +82,12 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                         
                     }
                     if ($sameMovie == true){
-                        $msg="Movie Already Chosen";
+                        $msg="Movie Already Added";
                         $action="detailMovieID";
                     } else {
                         $result = MyMoviesDAO::createMovie($myMovies);
                         if($result>0){
-                            $msg="Movie Already Added";
+                            $msg="Movie Added to Your List";
                             $action="detailMovieID";
                         }
                     }
@@ -106,7 +106,7 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                     //VERIFY IF THE MOVIE IS ALREADY IN THE mymovies LIST!!!!
                     var_dump($myMovies->getMovieID());
                     
-                    $myMovies->setMovieID(null);
+                   // $myMovies->setMovieID(null);
                     $result = MyMoviesDAO::getMovie($myMovies->getMovieID());
     
                     if($result!=null){
