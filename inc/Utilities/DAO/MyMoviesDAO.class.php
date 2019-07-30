@@ -124,10 +124,11 @@ class MyMoviesDAO {
 
     }
 //UPDATE 
-static function updateMyMovies(MyMovies $updatedMovie): int   {
+static function updateMyMovies(Movies $updatedMovie): int   {
     try {
         //Create the query
-        $updateQuery = "UPDATE MyMovies SET Title = :title, Year = :yr, Runtime = :rn, Genre = :g, Plot = :plot, Poster = :poster
+        $updateQuery = "UPDATE MyMovies SET Title = :title, Year = :yr, Runtime = :rn, Genre = :g, Plot = :plot, Poster = :poster, 
+        Category = :category
          WHERE MovieID = :id;";
 
         //Query
@@ -141,6 +142,7 @@ static function updateMyMovies(MyMovies $updatedMovie): int   {
         self::$db->bind(':g', $updatedMovie->getGenre());
         self::$db->bind(':plot', $updatedMovie->getPlot());
         self::$db->bind(':poster', $updatedMovie->getPoster());
+        self::$db->bind(':category', $updatedMovie->getCategory());
         
         //Execute the query
         self::$db->execute();
