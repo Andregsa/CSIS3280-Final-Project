@@ -23,11 +23,11 @@ CREATE TABLE MyMovies
    UserID INT NOT NULL,
    Title CHAR(100),
    Year  YEAR(4),
-   Runtime INT(3),
+   Runtime VARCHAR(10),
    Genre TEXT(60),
    Plot TEXT(2000),
    Poster VARCHAR(1024),
-   Rating FLOAT(3,1) NOT NULL,
+   Rating VARCHAR(5) NOT NULL,
    Category VARCHAR(50),
    PRIMARY KEY(MovieID,UserID),
    FOREIGN KEY (UserID) REFERENCES User(UserID)
@@ -39,7 +39,7 @@ CREATE TABLE WatchedMovies
   UserID INT NOT NULL,
   MovieID INT UNSIGNED NOT NULL,
   Date DATE NOT NULL,
-  Rate FLOAT(3,1) NOT NULL,
+  Rate VARCHAR(5) NOT NULL,
   PRIMARY KEY(WatchedID,UserID),
   FOREIGN KEY (UserID) REFERENCES User(UserID)
 
@@ -52,11 +52,11 @@ CREATE TABLE HomePageMovies
 (  MovieID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
    Title CHAR(100),
    Year  YEAR(4),
-   Runtime INT(3),
+   Runtime VARCHAR(10),
    Genre TEXT(60),
    Plot TEXT(2000),
    Poster VARCHAR(1024),
-   Rating FLOAT(3,1) NOT NULL,
+   Rating VARCHAR(5) NOT NULL,
    Category VARCHAR(50) NOT NULL
 );
 

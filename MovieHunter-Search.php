@@ -85,11 +85,13 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                     }
                     if ($sameMovie == true){
                         $msg="Movie Already Added";
+                        $search = $_POST["search"];
                         $action="detailMovieID";
                     } else {
                         $result = MyMoviesDAO::createMovie($myMovies);
                         if($result>0){
                             $msg="Movie Added to Your List";
+                            $search = $_POST["search"];
                             $action="detailMovieID";
                         }
                     }
@@ -116,21 +118,70 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                     }
                     if ($sameMovie == true){
                         $msg="Movie Already Added";
+                        $search = $_POST["search"];
                         $action="detailMovieID";
                     } else {
-                    //$result = WatchedMoviesDAO::getWMovieByUser($user->getUserID());
+                    
+                    $user = UserDAO::getUserEmail($_SESSION['logged']);
+                    $myMovies->setUserID($user->getUserID());
 
-                    //if($result!=null)
+                         //VERIFY IF THE MOVIE IS ALREADY IN THE MYMOVIES LIST!!!!
+                    $allMovies = MyMoviesDAO::getMovieByUser($user->getUserID());
+                    $sameMovie = false;
+                    foreach($allMovies as $movie){
+                       
+                        if($movie->getTitle() == $myMovies->getTitle() && $movie->getYear() == $myMovies->getYear()){
+                            $sameMovie = true;
+                            $movieID = $movie->getMovieID();
+                            
+                        }
+                        
+                    }
+
+                    if($sameMovie==true){
+
+
                         $wm  = new WatchedMovies();
                         $wm->setUserID($user->getUserID());
-                        $wm->setMovieID($myMovies->getMovieID());
+                        $wm->setMovieID($movieID);
                         $wm->setDate(date("Y:m:d"));
                         $wm->setRate(0);//must be updated by user.
                         WatchedMoviesDAO::createWMovies($wm);
                         $msg="Movie Added to Your Watch List";
+                        $search = $_POST["search"];
                         $action="detailMovieID";
                     
                     }
+
+                    else{
+                        //IF MOVIES DOES NOT EXIST IN MY MOVIE LIST, 
+                        //ADD TO MYLISR FIRST TO GET THE MOVIE ID AFTER AND POPULATE MYWATCHED MOVIED LIST
+                        $myMovies->setCategory("Watched");
+                        MyMoviesDAO::createMovie($myMovies);
+
+                        $allMovies = MyMoviesDAO::getMovieByUser($user->getUserID());
+                        
+                        foreach($allMovies as $movie){
+                        //GET THE MOVIE ID IN MYMOVIE LIST TO USER AS FOREIGN KEY IN MY WATCHED LIST
+                            if($movie->getTitle() == $myMovies->getTitle() && $movie->getYear() == $myMovies->getYear()){
+                                $sameMovie = true;
+                                $movieID = $movie->getMovieID();  
+                            } 
+                        }
+
+                        $wm  = new WatchedMovies();
+                        $wm->setUserID($user->getUserID());
+                        $wm->setMovieID($movieID);
+                        $wm->setDate(date("Y:m:d"));
+                        $wm->setRate(0);//must be updated by user.
+                        WatchedMoviesDAO::createWMovies($wm);
+                        $msg="Movie Added to Your Watch List";
+                        $search = $_POST["search"];
+                        $action="detailMovieID";
+
+                    }
+                }
+                    
                 }
 
             }
@@ -273,16 +324,8 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
             Page::Footer();
                 
             }
-
-        
-
-            
-
-
-
         }
 
-      
     }
 
  
