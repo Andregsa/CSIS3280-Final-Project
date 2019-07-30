@@ -15,16 +15,16 @@ class WatchedMoviesDAO    {
     static function createWMovies(WatchedMovies $wm): int   {
 
         //Generate the INSERT STATEMENT for the WatchedMovies;
-        $sqlInsert = "INSERT INTO WatchedMovies (MovieID, UserID, Date, Rate)
-         VALUES (:mid,:uid, :d, :r);";
+        $sqlInsert = "INSERT INTO WatchedMovies (UserID, MovieID, Date, Rate)
+         VALUES (:uid,:mid, :d, :r);";
 
         //prepare the query
         self::$db->query($sqlInsert);
 
         //Setup the bind parameters
+        self::$db->bind(':uid', $wm->getUserID());
         self::$db->bind(':mid', $wm->getMovieID());
-        self::$db->bind(':mid', $wm->getUserID());
-        self::$db->bind(':d', $wm->getDates());
+        self::$db->bind(':d', $wm->getDate());
         self::$db->bind(':r', $wm->getRate());
 
         //Execute the query
@@ -87,7 +87,7 @@ class WatchedMoviesDAO    {
     }
 
     //UPDATE 
-    static function updateWatchedMovies(WatchedMovies $updateWMovies): int   {
+    static function updateWatchedMovies($id,$r): int   {
         try {
             //Create the query
             $updateQuery = "UPDATE WatchedMovies SET Rate=:r WHERE WatchedID = :id;";
@@ -96,8 +96,8 @@ class WatchedMoviesDAO    {
             self::$db->query($updateQuery);
 
             //Bind
-            self::$db->bind(':id',$updateWMovies->getWatchedID());
-            self::$db->bind(':r', $updateWMovies->getRate());
+            self::$db->bind(':id',$id);
+            self::$db->bind(':r', $r);
             
             //Execute the query
             self::$db->execute();
@@ -108,7 +108,7 @@ class WatchedMoviesDAO    {
             }
         } catch (Exception $ex) {
             echo $ex->getMessage();
-            self::$db->debugDumpParams();
+            //self::$db->debugDumpParams();
         }    
 
         //Get the number of affected rows
@@ -138,7 +138,7 @@ class WatchedMoviesDAO    {
         } catch (Exception $ex) {
 
             echo $ex->getMessage();
-            self::$db->debugDumpParams();
+            //self::$db->debugDumpParams();
             return false;
         
         }

@@ -4,9 +4,14 @@ require_once("inc/Utilities/PDOAgent.class.php");
 require_once("inc/Utilities/DAO/UserDAO.class.php");
 require_once("inc/Entities/User.class.php");
 require_once("inc/Utilities/DAO/MyMoviesDAO.class.php");
+require_once("inc/Utilities/DAO/HomePageDAO.class.php");
+require_once("inc/Utilities/DAO/WatchedMoviesDAO.class.php");
 require_once("inc/Entities/Movies.class.php");
+require_once("inc/Entities/WatchedMovies.class.php");
 UserDAO::initialize();
-
+MyMoviesDAO::init();
+WatchedMoviesDAO::init();
+HomePageDAO::init();
 class Page{
     static function Header(){
       $mySession = LoginManager::verifySession();
@@ -661,18 +666,43 @@ static function showCreateUser($errors) { ?>
 
       Static function wmovies($Wm)
       {?>
+      <br />
       <table class="table table-dark">
       <?php
+      echo '<form method="POST" action="">';
+      echo '<tr>';
+      echo '<th>MovieID</th>';
+      echo '<th>Title</th>';
+      echo '<th>Date Watched</th>';
+      echo '<th>Your Rate</th>';
+      echo '</tr>'; 
       foreach($Wm as  $movie)
       {
+        $m = HomePageDAO::getMovie($movie->getMovieID());
         echo '<tr>';
         echo '<td>'.$movie->getMovieID().'</td>';
+        echo '<td>'.$m->getTitle().'</td>';
         echo '<td>'.$movie->getDate().'</td>';
         echo '<td>'.$movie->getRate().'</td>';
+        echo '<td><button type="submit" class="btn btn-warning" name="edit" value='.$movie->getWatchedID().'>Edit</button></td>';
+        echo '<td><button type="submit" class="btn btn-warning" name="delete" value='.$movie->getWatchedID().'>Remove</button></td>';
         echo '</tr>';
       }
+      echo '</form>';
       ?>
       </table>
+      <?php
+      }
+      static function editWMovieRate()
+      {?>
+      <form method="POST">
+      <h4>Your Rating: </h4>
+
+      <div class="input-group">
+        <input type="decimal" name="userrate" min="1" max="10"/>
+        <span class="input-group-addon"><button class="btn btn-warning" name="saveEdits">Save</button></span>
+      </div>
+      </form>
       <?php
       }
 

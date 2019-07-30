@@ -10,6 +10,25 @@ Page::Header();
 WatchedMoviesDAO::init();
 $user = UserDAO::getUserEmail($_SESSION['logged']);
 $movies = WatchedMoviesDAO::getWMovieByUser($user->getUserID());
+if(isset($_POST))
+{
+    if(isset($_POST['edit']))
+    {
+        Page::editWMovieRate();
+        $id = $_POST['edit'];
+        $r = $_POST['userrate']??'10';
+        if(is_numeric($r))
+        {
+            WatchedMoviesDAO::updateWatchedMovies($id,$r);
+            header('Location: '.$_SERVER['PHP_SELF']);
+        }
+    }
+    else if(isset($_POST['delete']))
+    {
+        WatchedMoviesDAO::deleteWMovie($_POST['delete']);
+        header('Location: '.$_SERVER['PHP_SELF']);
+    }
+}
 Page::wmovies($movies);
 Page::Footer();
 
