@@ -620,12 +620,12 @@ static function showCreateUser($errors) { ?>
       }
       static function editWMovieRate()
       {?>
-      <form method="POST">
+      <form method="POST" action="">
       <h4>Your Rating: </h4>
 
       <div class="input-group">
-        <input type="decimal" name="userrate" min="1" max="10"/>
-        <span class="input-group-addon"><button class="btn btn-warning" name="saveEdits">Save</button></span>
+        <input type="decimal" name="userrate" id="userrate" min="1" max="10"/>
+        &nbsp<span class="input-group-addon"><button type="submit" class="btn btn-warning" name="saveEdits" onclick="window.location.href ='MovieHunter-WMovies.php'">Save</button></span>
       </div>
       </form>
       <?php

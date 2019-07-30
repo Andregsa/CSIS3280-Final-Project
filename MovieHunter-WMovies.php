@@ -16,11 +16,16 @@ if(isset($_POST))
     {
         Page::editWMovieRate();
         $id = $_POST['edit'];
-        $r = $_POST['userrate']??'10';
-        if(is_numeric($r))
+        $r = null;
+        if(isset($_POST['userrate']))
         {
-            WatchedMoviesDAO::updateWatchedMovies($id,$r);
-            header('Location: '.$_SERVER['PHP_SELF']);
+            $r = $_POST['userrate'];
+            if(is_numeric($r))
+            {
+                WatchedMoviesDAO::updateWatchedMovies($id,$r);
+                header('Location:MovieHunter-WMovies.php');
+                
+            }
         }
     }
     else if(isset($_POST['delete']))
