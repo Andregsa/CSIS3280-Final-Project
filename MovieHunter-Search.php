@@ -101,30 +101,39 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                 }
                 else{
                     $user = UserDAO::getUserEmail($_SESSION['logged']);
-                    $myMovies->setUserID($user->getUserID());
-    
-                    //VERIFY IF THE MOVIE IS ALREADY IN THE mymovies LIST!!!!
-                    var_dump($myMovies->getMovieID());
-                    
-                   // $myMovies->setMovieID(null);
-                    $result = MyMoviesDAO::getMovie($myMovies->getMovieID());
-    
-                    if($result!=null){
+                    //VERIFY IF THE MOVIE IS ALREADY IN THE LIST!
+                    $allMovies = WatchedMoviesDAO::getWMovieByUser($user->getUserID());
+                    $sameMovie = false;
+                    foreach($allMovies as $movie){
+                       
+                        if($movie->getMovieID() == $myMovies->getMovieID()){
+                            $sameMovie = true;
+                        }
+                        
+                    }
+                    if ($sameMovie == true){
+                        $msg="Movie Already Added";
+                        $action="detailMovieID";
+                    } else {
+                    //$result = WatchedMoviesDAO::getWMovieByUser($user->getUserID());
+
+                    //if($result!=null)
                         $wm  = new WatchedMovies();
+                        $wm->setUserID($user->getUserID());
                         $wm->setMovieID($myMovies->getMovieID());
                         $wm->setDate(date("Y:m:d"));
                         $wm->setRate(0);//must be updated by user.
                         WatchedMoviesDAO::createWMovies($wm);
                         $msg="Movie Added to Your Watch List";
                         $action="detailMovieID";
+                    
                     }
                 }
+
+            }
     
             }
-        }
-    
-    }
-    
+        }    
     
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         
