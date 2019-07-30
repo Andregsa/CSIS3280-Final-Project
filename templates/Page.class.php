@@ -535,13 +535,14 @@ static function showCreateUser($errors) { ?>
       
       <?php
       }
-      static function mymovies($mm, $lastclicked)
+      static function mymovies($mm, $lastclicked, $msg)
       {?>
       <table class="table table-dark">
       <?php
       if($lastclicked != ""){
         $lastclicked = "&last=".$lastclicked;
       }
+      echo '<h2>'.$msg.'</h2>';
       echo '<thead style="text-align:center; font-size:1.2em;">';
       echo '<tr>';
       echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=title'.$lastclicked.'">'."Title".'</th>';
@@ -551,6 +552,7 @@ static function showCreateUser($errors) { ?>
       echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=plot'.$lastclicked.'">'."Plot".'</th>';
       echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=rating'.$lastclicked.'">'."Rating".'</th>';
       echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=category'.$lastclicked.'">'."Category".'</th>';
+      echo '<th><a class="linksort" href="'.$_SERVER['PHP_SELF'].'?sort=category'.$lastclicked.'">'."Delete".'</th>';
       echo '</tr>';
       echo '</thead>';
 
@@ -566,17 +568,31 @@ static function showCreateUser($errors) { ?>
         echo '<td>'.$movie->getPlot().'</td>';
         echo '<td>'.$movie->getRating().'</td>';
         echo '<td>'.$movie->getCategory().'<br><ul style="list-style:none;display:inline;">
+        
         <li style="width:25px;height:25px;display:inline;">
-        <a href="delete.com">
+        <a href="'.$_SERVER['PHP_SELF'].'?movie='.$movie->getMovieID().'&action=edit">
         <img class="icons" style="width:25px;height:25px;display:inline;"src="templates/css/images/icons-edit.png" alt="not av">
         </li>
         
+        '/*.<li style="width:25px;height:25px;display:inline;">
+        <a href="'.$_SERVER['PHP_SELF'].'?movie='.$movie->getMovieID().'&action=delete">
+        <img class="icons" style="width:25px;height:25px;display:inline;" src="templates/css/images/icons-delete.png" alt="not av">
+        </li>
+        .*/;'
+        </ul></td>';
+
+        echo '<td>
+        <form method="POST" action="'.$_SERVER['PHP_SELF'].'">
+        <ul>
         <li style="width:25px;height:25px;display:inline;">
-        <a href="delete.com">
+        <input type="hidden" name="deleteMovie" value="'.$movie->getMovieID().'">
+        <button type="submit" name="delete" style="border:0;background:transparent;">
         <img class="icons" style="width:25px;height:25px;display:inline;" src="templates/css/images/icons-delete.png" alt="not av">
         </li>
 
-        </ul></td>';
+        </ul>
+        </form>
+        </td>';
         echo '</tr>';
       }
       echo '</tbody>';
@@ -584,6 +600,65 @@ static function showCreateUser($errors) { ?>
       </table>
       <?php
       }
+      Static function showEditCategory($movie,$msg){ 
+         echo '<div class="movie_detail">';
+        echo '<table id="movie_detail" class="table table-dark">';
+
+        echo '<tr>';
+        echo  '<td rowspan="7"><img src="'.$movie->getPoster().'" alt="" /></td>' ;
+        echo  '<th>'."Title:".'</th>' ;
+        echo  '<td>'.$movie->getTitle().'</td>' ;
+        echo '</tr>';
+
+        echo '<tr>';
+        echo  '<th>'."Year:".'</th>' ;
+        echo  '<td>'.$movie->getYear().'</td>' ;
+        echo '</tr>';
+        echo '<tr>';
+
+        echo  '<th>'."RunTime:".'</th>' ;
+        echo  '<td>'.$movie->getRuntime().' minutes</td>' ;
+        echo '</tr>';
+
+        echo  '<th>'."Genre:".'</th>' ;
+        echo  '<td>'.$movie->getGenre().'</td>' ;
+        echo '</tr>';
+
+        echo  '<th>'."Plot:".'</th>' ;
+        echo  '<td>'.$movie->getPlot().'</td>' ;
+        echo '</tr>';
+
+        echo  '<th>'."IMDb Rating:".'</th>' ;
+        echo  '<td>'.$movie->getRating().'</td>' ;
+        echo '</tr>';
+
+        echo  '<th>'."Category:".'</th>' ;
+        echo  '<td>'.$movie->getCategory().'</td>' ;
+        echo '</tr>';
+
+        echo '</table>';
+
+        echo '<form method="POST" ACTION="'. $_SERVER["PHP_SELF"] .'">';
+        ?>
+        
+        <h2 style="color:white;">Edit Category</h2>
+        <input type="hidden" name="movieID"value="<?php echo $movie->getMovieID();?>">
+        <input type="text" style="margin-bottom:10px;" name="movieCategory" value="<?php echo $movie ->getCategory();?>"> <br>
+        <button type="cancel" class="btn btn-warning" name="type" value="return">Return</button>
+        <button type="submit" class="btn btn-warning" name="type" value="editCategory">Complete Edit</button>
+        
+
+        <?php
+        echo '</form>';
+
+        echo '<h2 >'. $msg. '</h2>' ;
+        
+        
+        echo '</div>';
+        
+        
+      }
+
       Static function wmovies($Wm)
       {?>
       <table class="table table-dark">
