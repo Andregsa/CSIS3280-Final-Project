@@ -1,13 +1,6 @@
 <?php
 class WatchedMovies
 {
-//     +---------+------------------+------+-----+---------+----------------+
-// | Field   | Type             | Null | Key | Default | Extra          |
-// +---------+------------------+------+-----+---------+----------------+
-// | RentID  | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-// | MovieID | int(10) unsigned | NO   |     | NULL    |                |
-// | Date    | date             | NO   |     | NULL    |                |
-// +---------+------------------+------+-----+---------+----------------+
     //Attributes
     private $WatchedID;
     private $UserID;

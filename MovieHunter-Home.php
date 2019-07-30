@@ -1,10 +1,12 @@
 <?php
     require_once("templates/Page.class.php");
     require_once("inc/Entities/Movies.class.php");
+    require_once("inc/Entities/WatchedMovies.class.php");
     require_once("inc/Utilities/DAO/TopRatedDAO.class.php");
     require_once("inc/Utilities/DAO/LatestTrailersDAO.class.php");
     require_once("inc/Utilities/DAO/MyMoviesDAO.class.php");
     require_once("inc/Utilities/DAO/HomePageDAO.class.php");
+    require_once("inc/Utilities/DAO/WatchedMoviesDAO.class.php");
     require_once("inc/Utilities/PDOAgent.class.php");
     require_once("inc/config.inc.php");
     require_once("inc/Utilities/LoginManager.class.php");
@@ -22,6 +24,7 @@
     LatestTrailersDAO::init();
     MyMoviesDAO::init();
     HomePageDAO::init();
+    WatchedMoviesDAO::init();
 
     
 
@@ -92,20 +95,32 @@
                 }
                 else{
                     $user = UserDAO::getUserEmail($_SESSION['logged']);
-                    $myMovies->setUserID($user->getUserID());
+                    //VERIFY IF THE MOVIE IS ALREADY IN THE LIST!
+                    $allMovies = WatchedMoviesDAO::getWMovieByUser($user->getUserID());
+                    $sameMovie = false;
+                    foreach($allMovies as $movie){
+                       
+                        if($movie->getMovieID() == $myMovies->getMovieID()){
+                            $sameMovie = true;
+                        }
+                        
+                    }
+                    if ($sameMovie == true){
+                        $msg="Movie Already Added";
+                        $action="detailMovieID";
+                    } else {
+                    //$result = WatchedMoviesDAO::getWMovieByUser($user->getUserID());
 
-                    //VERIFY IF THE MOVIE IS ALREADY IN THE mymovies LIST!!!!
-
-                    $result = MyMoviesDAO::getMovie($myMovies->getMovieID());
-
-                    if($result!=null){
+                    //if($result!=null)
                         $wm  = new WatchedMovies();
+                        $wm->setUserID($user->getUserID());
                         $wm->setMovieID($myMovies->getMovieID());
                         $wm->setDate(date("Y:m:d"));
                         $wm->setRate(0);//must be updated by user.
                         WatchedMoviesDAO::createWMovies($wm);
                         $msg="Movie Added to Your Watch List";
                         $action="detailMovieID";
+                    
                     }
                 }
 
@@ -180,20 +195,4 @@ function detailMovieID(){
     Page::Footer();
 
 }
-
-
-
-
-
-   
-    
-
-    
-   
-
-
-
-
-
-
 ?>
