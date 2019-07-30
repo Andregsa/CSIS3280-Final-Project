@@ -63,7 +63,9 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                 if(!$_SESSION){
                     //VALIDATE
                     $msg = "Please Login First!";
+                    $search = $_POST["search"];
                     $action="detailMovieID";
+
                 }
                 else{
                    
@@ -97,6 +99,7 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                 if(!$_SESSION){
                     //VALIDATE
                     $msg = "Please Login First!";
+                    $search = $_POST["search"];
                     $action="detailMovieID";
                 }
                 else{
@@ -234,7 +237,7 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
             }
 
 
-            //CODE TO SEND THE USERT TO DETAIL MOVIE PAGE
+            //CODE TO SEND THE USER TO DETAIL MOVIE PAGE
             if(isset($_GET['action']) && ($_GET['action']=="detailMovie") || $action == "detailMovieID"){
 
                 $fullLink = $link."?i=".rawurlencode(trim($_GET['MovieID'])).OMDB_KEY;
@@ -296,9 +299,10 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
     function detailMovieID(){
         global $msg;
         global $search;
+        global $selectedMovie;
      
-        Page::MovieDetail($search,$msg);
-            Page::Footer();
+        Page::MovieDetail($selectedMovie,$msg,$search);
+        Page::Footer();
     
     }
     
