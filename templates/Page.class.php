@@ -665,7 +665,7 @@ static function showCreateUser($errors) { ?>
         
       }
 
-      Static function wmovies($Wm)
+      Static function wmovies($Wm,$msg="")
       {?>
       <br />
       <table class="table table-dark">
@@ -701,12 +701,14 @@ static function showCreateUser($errors) { ?>
       echo '</form>';
       ?>
       </table>
+      <h4><?php echo $msg ?></h4>
       <?php
       }
-      static function editWMovieRate($id)
+      static function editWMovieRate($id,$msg="")
       {?>
       <form method="POST" action="">
       <h4>Your Rating: </h4>
+     
 
       <div class="input-group">
       

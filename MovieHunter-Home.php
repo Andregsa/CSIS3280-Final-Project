@@ -110,21 +110,65 @@
                         $msg="Movie Already Added";
                         $action="detailMovieID";
                     } else {
-                    //$result = WatchedMoviesDAO::getWMovieByUser($user->getUserID());
-
-                    //if($result!=null)
-                        $wm  = new WatchedMovies();
-                        $wm->setUserID($user->getUserID());
-                        $wm->setIMDbID($myMovies->getIMDbID());
-                        $wm->setDate(date("Y:m:d"));
-                        $wm->setRate(0);//must be updated by user.
-
-                        if(!WatchedMoviesDAO::createWMovies($wm)==null){
-                        $msg="Movie Added to Your Watch List";
-                        $action="detailMovieID";
+                        $myMovies->setUserID($user->getUserID());
+                             //VERIFY IF THE MOVIE IS ALREADY IN THE MYMOVIES LIST!!!!
+                        $allMovies = MyMoviesDAO::getMovieByUser($user->getUserID());
+                        $sameMovie = false;
+                        foreach($allMovies as $movie){
+                        
+                            if($movie->getIMDbID() == $myMovies->getIMDbID()){
+                                $sameMovie = true;
+                                $IMDbID = $movie->getIMDbID();
+                                
+                            }    
                         }
+                        if($sameMovie==true){
+
+
+                            $wm  = new WatchedMovies();
+                            $wm->setUserID($user->getUserID());
+                            $wm->setIMDbID($IMDbID);
+                            $wm->setDate(date("Y:m:d"));
+                            $wm->setRate(0);//must be updated by user.
+                            if(!WatchedMoviesDAO::createWMovies($wm)==null){
+                                $msg="Movie Added to Your Watch List";
+                                $action="detailMovieID";
+                                }
+                                else{
+                                    $msg="Error While Adding the Movie";
+                                }
+                        
+                        }
+
                         else{
-                            $msg="Error While Adding the Movie";
+                            //IF MOVIES DOES NOT EXIST IN MY MOVIE LIST, 
+                            //ADD TO MYLIST FIRST TO GET THE MOVIE ID AND AFTER POPULATE MYWATCHED MOVIED LIST
+                            $myMovies->setCategory("Watched");
+                            MyMoviesDAO::createMovie($myMovies);
+    
+                            $allMovies = MyMoviesDAO::getMovieByUser($user->getUserID());
+                            
+                            foreach($allMovies as $movie){
+                            //GET THE MOVIE ID IN MYMOVIE LIST TO USER AS FOREIGN KEY IN MY WATCHED LIST
+                                if($movie->getIMDbID() == $myMovies->getIMDbID()){
+                                    $sameMovie = true;
+                                    $IMDbID = $movie->getIMDbID();  
+                                } 
+                            }
+    
+                            $wm  = new WatchedMovies();
+                            $wm->setUserID($user->getUserID());
+                            $wm->setIMDbID($IMDbID);
+                            $wm->setDate(date("Y:m:d"));
+                            $wm->setRate(0);//must be updated by user.
+                            if(!WatchedMoviesDAO::createWMovies($wm)==null){
+                                $msg="Movie Added to Your Watch List";
+                                $action="detailMovieID";
+                                }
+                                else{
+                                    $msg="Error While Adding the Movie";
+                                }
+    
                         }
                     
                     }

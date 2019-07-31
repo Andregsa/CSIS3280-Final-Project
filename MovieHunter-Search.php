@@ -111,13 +111,8 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                     $sameWMovie = false;
                     foreach($allWMovies as $wmovie){
                        
-<<<<<<< HEAD
-                        if($wmovie->getMovieID() == $myMovies->getMovieID()){
+                        if($wmovie->getIMDbID() == $myMovies->getIMDbID()){
                             $sameWMovie = true;
-=======
-                        if($movie->getIMDbID() == $myMovies->getIMDbID()){
-                            $sameMovie = true;
->>>>>>> 772195ed71a8259afc922f76f74546af5872c105
                         }
                         
                     }

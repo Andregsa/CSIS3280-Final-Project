@@ -6,9 +6,9 @@ INSERT INTO User VALUES
   (3,'$2y$10$u.CuPl.igZL6a0M7eSMuqOvPcqpYm9tNUVq7DTp4FW60Orieni68G','marthur@gmail.com', 'Michelle','Arthur', '1999-04-10');
 
 INSERT INTO WatchedMovies VALUES
-  (4,1,3,"title",'2019-04-15',4.3),
-  (5,1,3,"title",'2019-07-15',7.5),
-  (6,2,2,"title",'2019-06-06',10.40);
+  (4,1,3,'2019-04-15',4.3),
+  (5,1,3,'2019-07-15',7.5),
+  (6,2,2,'2019-06-06',10.40);
 
 
 INSERT INTO MyMovies VALUES
