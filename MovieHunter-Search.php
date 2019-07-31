@@ -29,7 +29,7 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
          //Instantiate Movies
          $myMovies = new Movies;
        
-         $myMovies->setMovieID($_POST["movieID"]);
+         $myMovies->setIMDbID($_POST["IMDbID"]);
          $myMovies->setTitle($_POST["title"]);
          $myMovies->setYear($_POST["year"]);
          $myMovies->setRuntime($_POST["runtime"]);
@@ -111,7 +111,7 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                     $sameMovie = false;
                     foreach($allMovies as $movie){
                        
-                        if($movie->getMovieID() == $myMovies->getMovieID()){
+                        if($movie->getIMDbID() == $myMovies->getIMDbID()){
                             $sameMovie = true;
                         }
                         
@@ -130,9 +130,9 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                     $sameMovie = false;
                     foreach($allMovies as $movie){
                        
-                        if($movie->getTitle() == $myMovies->getTitle() && $movie->getYear() == $myMovies->getYear()){
+                        if($movie->getIMDbID() == $myMovies->getIMDbID()){
                             $sameMovie = true;
-                            $movieID = $movie->getMovieID();
+                            $IMDbID = $movie->getIMDbID();
                             
                         }
                         
@@ -143,7 +143,7 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
 
                         $wm  = new WatchedMovies();
                         $wm->setUserID($user->getUserID());
-                        $wm->setMovieID($movieID);
+                        $wm->setIMDbID($IMDbID);
                         $wm->setDate(date("Y:m:d"));
                         $wm->setRate(0);//must be updated by user.
                         WatchedMoviesDAO::createWMovies($wm);
@@ -163,15 +163,15 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                         
                         foreach($allMovies as $movie){
                         //GET THE MOVIE ID IN MYMOVIE LIST TO USER AS FOREIGN KEY IN MY WATCHED LIST
-                            if($movie->getTitle() == $myMovies->getTitle() && $movie->getYear() == $myMovies->getYear()){
+                            if($movie->getIMDbID() == $myMovies->getIMDbID()){
                                 $sameMovie = true;
-                                $movieID = $movie->getMovieID();  
+                                $IMDbID = $movie->getIMDbID();  
                             } 
                         }
 
                         $wm  = new WatchedMovies();
                         $wm->setUserID($user->getUserID());
-                        $wm->setMovieID($movieID);
+                        $wm->setIMDbID($IMDbID);
                         $wm->setDate(date("Y:m:d"));
                         $wm->setRate(0);//must be updated by user.
                         WatchedMoviesDAO::createWMovies($wm);
@@ -241,7 +241,7 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                                             $movie = new Movies();
                                             $movie->setTitle($std->Title);
                                             $movie->setPoster($std->Poster);
-                                            $movie->setMovieID($std->imdbID);
+                                            $movie->setIMDbID($std->imdbID);
                                             $movie->setYear($std->Year);
                                             
                                             $movies[] = $movie;
@@ -291,7 +291,7 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
             //CODE TO SEND THE USER TO DETAIL MOVIE PAGE
             if(isset($_GET['action']) && ($_GET['action']=="detailMovie") || $action == "detailMovieID"){
 
-                $fullLink = $link."?i=".rawurlencode(trim($_GET['MovieID'])).OMDB_KEY;
+                $fullLink = $link."?i=".rawurlencode(trim($_GET['IMDbID'])).OMDB_KEY;
                 $result = file_get_contents($fullLink,false);
                 $result = json_decode($result);
 
@@ -312,6 +312,7 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                         $movie->setPlot($result->Plot);
                         $movie->setRating($result->imdbRating);
                         $movie->setPoster($result->Poster);
+                        $movie->setIMDbID($result->imdbID);
                         $search = $_GET['search'];
                         
                         

@@ -26,6 +26,7 @@ class Movies
     private $Poster;
     private $Rating;
     private $Category;
+    private $IMDbID;
 
     //Getters
     function getMovieID()
@@ -68,6 +69,10 @@ class Movies
     {
         return $this->Category;
     }
+    function getIMDbID()
+    {
+        return $this->IMDbID;
+    }
     
     //Setters
     function setMovieID($mid)
@@ -109,6 +114,10 @@ class Movies
     function setCategory($newCat)
     {
         $this->Category = $newCat;
+    }
+    function setIMDbID($newIMDbID)
+    {
+        $this->IMDbID = $newIMDbID;
     }
 }
 ?>

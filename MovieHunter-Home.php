@@ -38,7 +38,7 @@
 
         //Instantiate Movies
         $myMovies = new Movies;
-        $myMovies->setMovieID($_POST["movieID"]);
+        $myMovies->setIMDbID($_POST["IMDbID"]);
         $myMovies->setTitle($_POST["title"]);
         $myMovies->setYear($_POST["year"]);
         $myMovies->setRuntime($_POST["runtime"]);
@@ -47,6 +47,7 @@
         $myMovies->setRating($_POST["rating"]);
         $myMovies->setPoster($_POST["poster"]);
         $myMovies->setCategory($_POST["category"]);
+        
 
         if(isset($_POST["cancel"])){
             if($_POST["cancel"]=="return")
@@ -70,7 +71,7 @@
                     $sameMovie = false;
                     foreach($allMovies as $movie){
                        
-                        if($movie->getTitle() == $myMovies->getTitle() && $movie->getYear() == $myMovies->getYear()){
+                        if($movie->getIMDbID() == $myMovies->getIMDbID()){
                             $sameMovie = true;
                         }
                         
@@ -100,7 +101,7 @@
                     $sameMovie = false;
                     foreach($allMovies as $movie){
                        
-                        if($movie->getMovieID() == $myMovies->getMovieID()){
+                        if($movie->getIMDbID() == $myMovies->getIMDbID()){
                             $sameMovie = true;
                         }
                         
@@ -114,12 +115,17 @@
                     //if($result!=null)
                         $wm  = new WatchedMovies();
                         $wm->setUserID($user->getUserID());
-                        $wm->setMovieID($myMovies->getMovieID());
+                        $wm->setIMDbID($myMovies->getIMDbID());
                         $wm->setDate(date("Y:m:d"));
                         $wm->setRate(0);//must be updated by user.
-                        WatchedMoviesDAO::createWMovies($wm);
+
+                        if(!WatchedMoviesDAO::createWMovies($wm)==null){
                         $msg="Movie Added to Your Watch List";
                         $action="detailMovieID";
+                        }
+                        else{
+                            $msg="Error While Adding the Movie";
+                        }
                     
                     }
                 }
@@ -177,7 +183,7 @@ function homePage(){
 function detailMovie(){
     global $msg;
     Page::Header();
-    $selectedMovie = HomePageDAO::getMovie($_GET["MovieID"]);
+    $selectedMovie = HomePageDAO::getMovie($_GET["IMDbID"]);
     //Parse Top Rated Movies and Lastest Trailers into Home Page
     Page::MovieDetail($selectedMovie,$msg);
     Page::Footer();
@@ -189,7 +195,7 @@ function detailMovie(){
 function detailMovieID(){
     global $msg;
     Page::Header();
-    $selectedMovie = HomePageDAO::getMovie($_POST["movieID"]);
+    $selectedMovie = HomePageDAO::getMovie($_POST["IMDbID"]);
     //Parse Top Rated Movies and Lastest Trailers into Home Page
     Page::MovieDetail($selectedMovie,$msg);
     Page::Footer();

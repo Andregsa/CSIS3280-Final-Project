@@ -4,7 +4,7 @@ class WatchedMovies
     //Attributes
     private $WatchedID;
     private $UserID;
-    private $MovieID;
+    private $IMDbID;
     private $Date;
     private $Rate; //0-10.0 Stars
 
@@ -18,9 +18,9 @@ class WatchedMovies
     {
         return $this->UserID;
     }
-    function getMovieID()
+    function getIMDbID()
     {
-        return $this->MovieID;
+        return $this->IMDbID;
     }
     function getDate()
     {
@@ -36,9 +36,9 @@ class WatchedMovies
     {
         $this->RentID = $rid;
     }
-    function setMovieID($mid)
+    function setIMDbID($mid)
     {
-        $this->MovieID = $mid;
+        $this->IMDbID = $mid;
     }
     function setDate($d)
     {

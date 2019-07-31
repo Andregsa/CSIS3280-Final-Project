@@ -15,7 +15,7 @@ class WatchedMoviesDAO    {
     static function createWMovies(WatchedMovies $wm): int   {
 
         //Generate the INSERT STATEMENT for the WatchedMovies;
-        $sqlInsert = "INSERT INTO WatchedMovies (UserID, MovieID, Date, Rate)
+        $sqlInsert = "INSERT INTO WatchedMovies (UserID, IMDbID, Date, Rate)
          VALUES (:uid,:mid, :d, :r);";
 
         //prepare the query
@@ -23,7 +23,7 @@ class WatchedMoviesDAO    {
 
         //Setup the bind parameters
         self::$db->bind(':uid', $wm->getUserID());
-        self::$db->bind(':mid', $wm->getMovieID());
+        self::$db->bind(':mid', $wm->getIMDbID());
         self::$db->bind(':d', $wm->getDate());
         self::$db->bind(':r', $wm->getRate());
 

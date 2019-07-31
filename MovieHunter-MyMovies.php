@@ -15,10 +15,10 @@ $msg = "";
 $movies = MyMoviesDAO::getMovieByUserSort($user->getUserID(),"Title");
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    if(isset($_POST['movieID'])){
+    if(isset($_POST['IMDbID'])){
         
         if($_POST['type'] == "editCategory"){
-            $movieEdit = MyMoviesDAO::getMovie($_POST['movieID']);
+            $movieEdit = MyMoviesDAO::getSingleMovieByUser($_POST['IMDbID'],$user->getUserID());
             
             //The database will not attempt to update the same information
             if($movieEdit->getCategory() != $_POST['movieCategory']){
@@ -28,15 +28,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 if( 50 < strlen($_POST['movieCategory'])){
                     $msg = "Character Limit Reached";
                 } else {
-                    MyMoviesDAO::updateMyMovies($movieEdit);
+                    $result = MyMoviesDAO::updateMyMovies($movieEdit);
+                    if($result>0){
                     $msg = "Category Edited!";
+                    $movies = MyMoviesDAO::getMovieByUserSort($user->getUserID(),"Title");
+                    }
+                    else{
+                        $msg = "Category Unchanged!";
+                    }
                 }
                 
             } else {
                 $msg = "Category Unchanged!";
             }
             
-            $movie = $movieEdit;
+          
             
         }
 
@@ -46,11 +52,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(isset($_POST['deleteMovie'])){
         
         //Getting a movie returns false if the movie does not exist in the database
-        $movieToDelete = MyMoviesDAO::getMovie($_POST['deleteMovie']);
+        $movieToDelete = MyMoviesDAO::getSingleMovieByUser($_POST['deleteMovie'],$user->getUserID());
         if($movieToDelete == false){
             $msg = "";
         } else {
-            $movieDelete = MyMoviesDAO::deleteMovie($_POST['deleteMovie']);
+            $movieDelete = MyMoviesDAO::deleteMovie($_POST['deleteMovie'],$user->getUserID());
             $msg = "The Movie Was Deleted";
             $movies = MyMoviesDAO::getMovieByUserSort($user->getUserID(),"Title");
         }
@@ -68,10 +74,10 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
             switch($action){
 
                 case 'edit':
-                $movieID = $_GET['movie'];
+                $movieIMDbID = $_GET['movie'];
                
                 //Prepares the movie to be display showEditCategory()
-                $movie = MyMoviesDAO::getMovie($movieID);
+                $movie = MyMoviesDAO::getSingleMovieByUser($movieIMDbID,$user->getUserID());
                 break;
             }
         }
@@ -141,19 +147,10 @@ function sortMovies($lastbtn,$columnName){
     return $movies;
 }
 
-//If the complete edit was clicked
-//The page will not go back to the front
-$editCategory = false;
-if(isset($_POST['type'])){
-    if($_POST['type'] == "editCategory"){
-        $editCategory = true;
-    }
-    
-}
 
 //Ensures that the page will remain on the edit page with these things true
 //Otherwise the mymovies page will display
-if(isset($_GET['action']) && $_GET['action'] == "edit" || $editCategory == true){
+if(isset($_GET['action']) && $_GET['action'] == "edit" ){
     Page::showEditCategory($movie,$msg);
 } else {
     Page::mymovies($movies,$lastClickedBTN,$msg);

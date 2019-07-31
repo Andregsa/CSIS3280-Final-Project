@@ -87,15 +87,15 @@ class HomePageDAO{
 
 
     //READ a single Movie
-    static function getMovie(int $id) : Movies   {
+    static function getMovie(string $IMDbID) : Movies   {
         
-        $singleSelect = "SELECT * FROM HomePageMovies WHERE MovieID = :id";
+        $singleSelect = "SELECT * FROM HomePageMovies WHERE IMDbID = :id";
 
         //Prepare the query
         self::$db->query($singleSelect);
 
         //Set the bind parameters
-        self::$db->bind(':id', $id);
+        self::$db->bind(':id', $IMDbID);
 
         //Execute the query
         self::$db->execute();
