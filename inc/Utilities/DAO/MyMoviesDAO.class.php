@@ -29,8 +29,8 @@ class MyMoviesDAO {
     static function createMovie(Movies $newMovie): int   {
 
         //Generate the INSERT STATEMENT for the movie;
-        $sqlInsert = "INSERT INTO MyMovies (UserID,Title, Year,Runtime,Genre,Plot,Poster,Rating,Category)
-         VALUES (:userID,:title, :yr, :rn, :g, :plot,:pst,:rat,:cat);";
+        $sqlInsert = "INSERT INTO MyMovies (UserID,IMDbID,Title, Year,Runtime,Genre,Plot,Poster,Rating,Category)
+         VALUES (:userID,:IMDbID,:title, :yr, :rn, :g, :plot,:pst,:rat,:cat);";
 
 
         //prepare the query
@@ -46,6 +46,7 @@ class MyMoviesDAO {
         self::$db->bind(':pst', $newMovie->getPoster());
         self::$db->bind(':rat', $newMovie->getRating());
         self::$db->bind(':cat', $newMovie->getCategory());
+        self::$db->bind(':IMDbID', $newMovie->getIMDbId());
 
         //Execute the query
         self::$db->execute();
@@ -56,15 +57,16 @@ class MyMoviesDAO {
     }
 
     //READ a single Movie
-    static function getMovie(int $id)   {
+    static function getSingleMovieByUser(string $id, $UserID)   {
         
-        $singleSelect = "SELECT * FROM MyMovies WHERE MovieID = :id";
+        $singleSelect = "SELECT * FROM MyMovies WHERE IMDbID = :id AND UserID = :uid";
 
         //Prepare the query
         self::$db->query($singleSelect);
 
         //Set the bind parameters
         self::$db->bind(':id', $id);
+        self::$db->bind(':uid', $UserID);
 
         //Execute the query
         self::$db->execute();
@@ -126,23 +128,24 @@ class MyMoviesDAO {
 //UPDATE 
 static function updateMyMovies(Movies $updatedMovie): int   {
     try {
+
         //Create the query
-        $updateQuery = "UPDATE MyMovies SET Title = :title, Year = :yr, Runtime = :rn, Genre = :g, Plot = :plot, Poster = :poster, 
-        Category = :category
-         WHERE MovieID = :id;";
+        $updateQuery = "UPDATE MyMovies SET Category = :category
+         WHERE IMDbID = :id AND  UserID = :uid ;";
 
         //Query
         self::$db->query($updateQuery);
 
         //Bind
-        self::$db->bind(':id', $updatedMovie->getMovieID());
-        self::$db->bind(':title', $updatedMovie->getTitle());
-        self::$db->bind(':yr', $updatedMovie->getYear());
-        self::$db->bind(':rn',$updatedMovie->getRuntime());
-        self::$db->bind(':g', $updatedMovie->getGenre());
-        self::$db->bind(':plot', $updatedMovie->getPlot());
-        self::$db->bind(':poster', $updatedMovie->getPoster());
+        self::$db->bind(':id', $updatedMovie->getIMDbID());
+        // self::$db->bind(':title', $updatedMovie->getTitle());
+        // self::$db->bind(':yr', $updatedMovie->getYear());
+        // self::$db->bind(':rn',$updatedMovie->getRuntime());
+        // self::$db->bind(':g', $updatedMovie->getGenre());
+        // self::$db->bind(':plot', $updatedMovie->getPlot());
+        // self::$db->bind(':poster', $updatedMovie->getPoster());
         self::$db->bind(':category', $updatedMovie->getCategory());
+        self::$db->bind(':uid', $updatedMovie->getUserID());
         
         //Execute the query
         self::$db->execute();
@@ -161,17 +164,18 @@ static function updateMyMovies(Movies $updatedMovie): int   {
 }
 
 //DELETE
-static function deleteMovie(int $id): bool {
+static function deleteMovie(string $id, $userID): bool {
 
     try {
 
         //Create the delete query
-        $deleteQuery = "DELETE FROM MyMovies WHERE MovieID = :id";
+        $deleteQuery = "DELETE FROM MyMovies WHERE IMDbID = :id AND  UserID = :uid";
 
         self::$db->query($deleteQuery);
 
         //Bind the id
         self::$db->bind(':id', $id);
+        self::$db->bind(':uid', $userID);
         
         //Execute the query
         self::$db->execute();

@@ -12,7 +12,7 @@ $user = UserDAO::getUserEmail($_SESSION['logged']);
 $movies = WatchedMoviesDAO::getWMovieByUser($user->getUserID());
 if(isset($_POST))
 {
-    if(isset($_POST['edit']))
+    if(isset($_POST['edit'])|| isset($_POST['saveEdits']))
     {
         Page::editWMovieRate();
         $id = $_POST['edit'];
