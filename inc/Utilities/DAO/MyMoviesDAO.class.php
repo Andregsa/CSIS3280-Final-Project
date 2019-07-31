@@ -92,6 +92,44 @@ class MyMoviesDAO {
         return self::$db->resultSet();
 
     }
+
+    static function getMovie2(string $IMDbID, int $UID) : Movies   {
+        
+        
+        $singleSelect = "SELECT * FROM MyMovies WHERE IMDbID = :id AND UserID = :usid";
+
+        //Prepare the query
+        self::$db->query($singleSelect);
+
+        //Set the bind parameters
+        self::$db->bind(':id', $IMDbID);
+        self::$db->bind(':usid', $UID);
+
+        //Execute the query
+        self::$db->execute();
+
+        //Get the row
+        return self::$db->singleResult();
+
+    }
+
+    static function getMovieByUserWatched(int $id)   {
+        
+        $singleSelect = "SELECT * FROM MyMovies WHERE UserID = :id";
+
+        //Prepare the query
+        self::$db->query($singleSelect);
+
+        //Set the bind parameters
+        self::$db->bind(':id', $id);
+
+        //Execute the query
+        self::$db->execute();
+
+        //Get the row
+        return self::$db->resultSet();
+
+    }
     static function getMovieByUserSort(int $id, string $columnName)   {
         
         $singleSelect = "SELECT * FROM MyMovies WHERE UserID = :id ORDER BY $columnName";

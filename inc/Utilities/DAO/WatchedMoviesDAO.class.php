@@ -54,6 +54,8 @@ class WatchedMoviesDAO    {
 
     }
 
+    
+
     static function getWatchedMovies()    {
 
         $sqlQuery = "SELECT * FROM WatchedMovies;";

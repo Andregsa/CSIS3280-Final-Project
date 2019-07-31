@@ -33,7 +33,6 @@
                 if($user != null && $user->verifyPassword($_POST['password2']) == true)
                 {
                     session_start();
-                    var_dump($_POST['email2']);
                     $_SESSION['logged'] = $_POST['email2'];
                     header('Location: '."MovieHunter-Home.php");
 

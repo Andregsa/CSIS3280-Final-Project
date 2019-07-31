@@ -10,18 +10,23 @@ Page::Header();
 WatchedMoviesDAO::init();
 $user = UserDAO::getUserEmail($_SESSION['logged']);
 $movies = WatchedMoviesDAO::getWMovieByUser($user->getUserID());
+var_dump($movies);
 if(isset($_POST))
 {
-    if(isset($_POST['edit'])|| isset($_POST['saveEdits']))
+    if(isset($_POST['edit']) || isset($_POST['saveEdits']))
     {
-        Page::editWMovieRate();
         $id = $_POST['edit'];
+        
+        Page::editWMovieRate($id);
+        
         $r = null;
         if(isset($_POST['userrate']))
         {
             $r = $_POST['userrate'];
             if(is_numeric($r))
             {
+                $id = $_POST['hiddenWatchedID'];
+             
                 WatchedMoviesDAO::updateWatchedMovies($id,$r);
                 header('Location:MovieHunter-WMovies.php');
                 

@@ -105,6 +105,10 @@ class HomePageDAO{
 
     }
 
+    
+
+    
+
 
     static function getMovies()    {
 
