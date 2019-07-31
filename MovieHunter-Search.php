@@ -107,22 +107,25 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                 else{
                     $user = UserDAO::getUserEmail($_SESSION['logged']);
                     //VERIFY IF THE MOVIE IS ALREADY IN THE LIST!
-                    $allMovies = WatchedMoviesDAO::getWMovieByUser($user->getUserID());
-                    $sameMovie = false;
-                    foreach($allMovies as $movie){
+                    $allWMovies = WatchedMoviesDAO::getWMovieByUser($user->getUserID());
+                    $sameWMovie = false;
+                    foreach($allWMovies as $wmovie){
                        
+<<<<<<< HEAD
+                        if($wmovie->getMovieID() == $myMovies->getMovieID()){
+                            $sameWMovie = true;
+=======
                         if($movie->getIMDbID() == $myMovies->getIMDbID()){
                             $sameMovie = true;
+>>>>>>> 772195ed71a8259afc922f76f74546af5872c105
                         }
                         
                     }
-                    if ($sameMovie == true){
+                    if ($sameWMovie == true){
                         $msg="Movie Already Added";
                         $search = $_POST["search"];
                         $action="detailMovieID";
                     } else {
-                    
-                    $user = UserDAO::getUserEmail($_SESSION['logged']);
                     $myMovies->setUserID($user->getUserID());
 
                          //VERIFY IF THE MOVIE IS ALREADY IN THE MYMOVIES LIST!!!!

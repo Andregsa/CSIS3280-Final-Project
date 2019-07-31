@@ -29,7 +29,7 @@ if(isset($_POST))
              
                 WatchedMoviesDAO::updateWatchedMovies($id,$r);
                 header('Location:MovieHunter-WMovies.php');
-                
+                unset($_GET);
             }
         }
     }
