@@ -684,14 +684,24 @@ static function showCreateUser($errors) { ?>
         } else if (get_class($movie) == "WatchedMovies"){
            
           $user = UserDAO::getUserEmail($_SESSION['logged']);
+          $link = "http://www.omdbapi.com/";
+          $fullLink = $link."?i=".rawurlencode(trim($movie->getIMDbID())).OMDB_KEY;
+          $result = file_get_contents($fullLink,false);
+          $result = json_decode($result);
+
+          if(get_class($result) == 'stdClass'){
+           
+           
+          $movieTitle = $result->Title;
+
+        }
          
-    
-          $m = MyMoviesDAO::getMovie2($movie->getIMDbID(),$user->getUserID());
+
        
         }
      
         echo '<tr>';
-        echo '<td>'.$m->getTitle().'</td>';
+        echo '<td>'.$movieTitle.'</td>';
         echo '<td>'.$movie->getDate().'</td>';
         echo '<td>'.$movie->getRate().'</td>';
         echo '<td><button type="submit" class="btn btn-warning" name="edit" value='.$movie->getWatchedID().'>Edit</button></td>';

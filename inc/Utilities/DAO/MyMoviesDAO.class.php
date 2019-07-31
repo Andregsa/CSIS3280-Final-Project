@@ -97,7 +97,7 @@ class MyMoviesDAO {
         
         
         $singleSelect = "SELECT * FROM MyMovies WHERE IMDbID = :id AND UserID = :usid";
-
+        //SELECT * FROM MyMovies WHERE IMDbID = tt8637428 AND UserID = 5;
         //Prepare the query
         self::$db->query($singleSelect);
 
