@@ -676,9 +676,20 @@ static function showCreateUser($errors) { ?>
       echo '<th>Date Watched</th>';
       echo '<th>Your Rate</th>';
       echo '</tr>'; 
+      
       foreach($Wm as  $movie)
       {
-        $m = HomePageDAO::getMovie($movie->getIMDbID());
+        if(get_class($movie) == "Movies"){
+          $m = HomePageDAO::getMovie($movie->getIMDbID());
+        } else if (get_class($movie) == "WatchedMovies"){
+           
+          $user = UserDAO::getUserEmail($_SESSION['logged']);
+         
+    
+          $m = MyMoviesDAO::getMovie2($movie->getIMDbID(),$user->getUserID());
+       
+        }
+     
         echo '<tr>';
         echo '<td>'.$m->getTitle().'</td>';
         echo '<td>'.$movie->getDate().'</td>';
@@ -692,7 +703,7 @@ static function showCreateUser($errors) { ?>
       </table>
       <?php
       }
-      static function editWMovieRate()
+      static function editWMovieRate($id)
       {?>
       <form method="POST" action="">
       <h4>Your Rating: </h4>
@@ -700,6 +711,7 @@ static function showCreateUser($errors) { ?>
       <div class="input-group">
       
         <input type="decimal" name="userrate" id="userrate" min="1" max="10"/>
+        <input type="hidden" name="hiddenWatchedID" value="<?php echo $id;?>">
         &nbsp<span class="input-group-addon"><button type="submit" class="btn btn-warning" name="saveEdits" onclick="window.location.href ='MovieHunter-WMovies.php'">Save</button></span>
       </div>
       </form>
