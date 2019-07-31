@@ -63,44 +63,25 @@ INSERT INTO MyMovies VALUES
   
   (15, "The Dark Knight", 2008, 152, "Action, Crime, Drama, Thriller", "When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.","https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",9.0, "Top Rated","tt0468569"),
   
-  (16, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8,"Top Rated" ,"tt2283336" ),
+  (16, "Schindler's List", 1993, 195, "Biography, Drama, History","In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.","https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",8.9,"Top Rated" ,"tt0108052" ),
   
-  (17, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ,"Top Rated" ,"tt2283336"),
+  (17, "The Lord of the Rings: The Return of the King", 2003,201, "Adventure, Drama, Fantasy","Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.","https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",8.9 ,"Top Rated" ,"tt0167260"),
   
-  (18, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
-  to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
-  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8,"Top Rated","tt2283336" ),
+  (18, "Fight Club", 1999, 139, "Drama", "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.","https://m.media-amazon.com/images/M/MV5BMjJmYTNkNmItYjYyZC00MGUxLWJhNWMtZDY4Nzc1MDAwMzU5XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",8.8,"Top Rated","tt0137523" ),
   
-    (19, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8,"Top Rated","tt2283336"  ),
+    (19, "Forrest Gump", 1994, 142, "Drama, Romance","The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.","https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",8.8,"Top Rated","tt0109830"),
   
-  (20, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8,"Top Rated","tt2283336"  ),
+  (20, "Inception", 2010, 148, "Action, Adventure, Sci-Fi, Thriller","A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O","https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",8.8,"Top Rated","tt1375666"  ),
   
   (21, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
   to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
   the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8, "Top Rated","tt2283336"),
   
-  (22, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
-  Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
-  the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
-  the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8, "Top Rated","tt2283336" ),
+  (22, "Star Wars: Episode V - The Empire Strikes Back", 1980, 124, "Action, Adventure, Fantasy, Sci-Fi","After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader.","https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",8.7, "Top Rated","tt0080684" ),
   
   (23, "Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
   Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
   the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
   the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8, "Top Rated","tt2283336" ),
   
-  (24, "Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
-  to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
-  the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8, "Top Rated","tt2283336");
+  (24, "City of God", 2002,130, "Crime, Drama", "	In the slums of Rio, two kids' paths diverge as one struggles to become a photographer and the other a kingpin.","https://m.media-amazon.com/images/M/MV5BMGU5OWEwZDItNmNkMC00NzZmLTk1YTctNzVhZTJjM2NlZTVmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",8.6, "Top Rated","tt0317248");
