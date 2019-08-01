@@ -314,10 +314,11 @@ $count=0;
     <?php }
 
     static function Footer(){ ?>
-        <div id="footer">
+        <div id="footer" style="padding: 25px;">
         <p class="lf">Copyright &copy; 2019 <a href="#">Movie Hunter</a> - All Rights Reserved</p>
+        <p class="lf" style="padding-left:5%;">Powered by OMDb API</p>
         <p class="rf" >Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
-        <p class="rf" style="padding-right:23%;">Created by Andre Sa, Anusha Das and Adam McCallum</p>
+        <p class="rf" style="padding-right:13%;">Created by Andre Sa, Anusha Das and Adam McCallum</p>
         <div style="clear:both;"></div>
       </div>
     </div>
