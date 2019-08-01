@@ -316,7 +316,8 @@ $count=0;
     static function Footer(){ ?>
         <div id="footer">
         <p class="lf">Copyright &copy; 2019 <a href="#">Movie Hunter</a> - All Rights Reserved</p>
-        <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
+        <p class="rf" >Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
+        <p class="rf" style="padding-right:23%;">Created by Andre Sa, Anusha Das and Adam McCallum</p>
         <div style="clear:both;"></div>
       </div>
     </div>
