@@ -12,16 +12,16 @@ INSERT INTO WatchedMovies VALUES
 
 
 INSERT INTO MyMovies VALUES
-  (1, 1,"IMDBID","The Lion King", 1994, 88,"Animation, Adventure, Drama, Family, Musical","A Lion cub crown prince 
+  (1, 1,"IMDBID","The Lion King", "1994", 88,"Animation, Adventure, Drama, Family, Musical","A Lion cub crown prince 
   is tricked by a treacherous uncle into thinking he caused his father's death and flees into exile in 
   despair, only to learn in adulthood his identity and his responsibilities",
   "https://m.media-amazon.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2J
   iM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg",6.8 ,"My Favourite Movies"),
-  (2, 1,"tt4154796","Avengers Endgame", 2019, 181, "Action, Adventure, Sci-Fi","After the devastating events of 
+  (2, 1,"tt4154796","Avengers Endgame", "2019", 181, "Action, Adventure, Sci-Fi","After the devastating events of 
   Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, 
   the Avengers assemble once more in order to reverse Thanos' actions and restore balance to 
   the universe.","https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",6.8 ,"My Favourite Movies"),
-  (3, 2, "tt0499549","Avatar", 2009, 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
+  (3, 2, "tt0499549","Avatar", "2009", 162, "Action, Adventure, Fantasy, Sci-Fi", "A paraplegic Marine dispatched 
   to the moon Pandora on a unique mission becomes torn between following his orders and protecting 
   the world he feels is his home.","https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",6.8,"Saturday Night Favs");
   

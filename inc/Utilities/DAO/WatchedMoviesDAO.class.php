@@ -140,7 +140,7 @@ class WatchedMoviesDAO    {
         } catch (Exception $ex) {
 
             echo $ex->getMessage();
-            //self::$db->debugDumpParams();
+            error_log($ex->getMessage() ." at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILE);
             return false;
         
         }

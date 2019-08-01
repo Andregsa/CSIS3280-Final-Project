@@ -65,6 +65,9 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                     $msg = "Please Login First!";
                     $search = $_POST["search"];
                     $action="detailMovieID";
+                    //Log the message
+                    error_log(" Message: ".$msg
+                    . " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
 
                 }
                 else{
@@ -86,11 +89,17 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                     if ($sameMovie == true){
                         $msg="Movie Already Added";
                         $search = $_POST["search"];
+                        //Log the message
+                        error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                        ." / IMDbID: ".$movie->getIMDbID(). " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
                         $action="detailMovieID";
                     } else {
                         $result = MyMoviesDAO::createMovie($myMovies);
                         if($result>0){
                             $msg="Movie Added to Your List";
+                            //Log the message
+                            error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                            ." / IMDbID: ".$myMovies->getIMDbID(). " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
                             $search = $_POST["search"];
                             $action="detailMovieID";
                         }
@@ -103,6 +112,9 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                     $msg = "Please Login First!";
                     $search = $_POST["search"];
                     $action="detailMovieID";
+                    //Log the message
+                    error_log("Message: ".$msg
+                    ." at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
                 }
                 else{
                     $user = UserDAO::getUserEmail($_SESSION['logged']);
@@ -117,9 +129,12 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                         
                     }
                     if ($sameWMovie == true){
-                        $msg="Movie Already Added";
+                        $msg="Movie Already Watched";
                         $search = $_POST["search"];
                         $action="detailMovieID";
+                        //Log the message
+                        error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                        ." / IMDbID: ".$myMovies->getIMDbID(). " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
                     } else {
                     $myMovies->setUserID($user->getUserID());
 
@@ -148,12 +163,15 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                         $msg="Movie Added to Your Watch List";
                         $search = $_POST["search"];
                         $action="detailMovieID";
+                        //Log Message
+                        error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                        ." / IMDbID: ".$myMovies->getIMDbID(). " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
                     
                     }
 
                     else{
                         //IF MOVIES DOES NOT EXIST IN MY MOVIE LIST, 
-                        //ADD TO MYLISR FIRST TO GET THE MOVIE ID AFTER AND POPULATE MYWATCHED MOVIED LIST
+                        //ADD TO MYLIST FIRST TO GET THE MOVIE ID AFTER AND POPULATE MYWATCHED MOVIED LIST
                         $myMovies->setCategory("Watched");
                         MyMoviesDAO::createMovie($myMovies);
 
@@ -176,6 +194,9 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                         $msg="Movie Added to Your Watch List";
                         $search = $_POST["search"];
                         $action="detailMovieID";
+                        //Log Message
+                        error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                        ." / IMDbID: ".$myMovies->getIMDbID(). " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
 
                     }
                 }
@@ -266,11 +287,16 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
                 
                 if(!$movies){
                     $msg = "Movie Not Found!"."<BR>"."Try Refine Your Search!";
+
+                    //Log Message
+                    error_log("Message: ".$msg
+                    ." Search: ".$_GET['searchField']. " / Year: ".$_GET['yearField']. " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILE);
+
                     Page::MoviesSearch($movies,$number,$_GET['searchField'],$msg);
                 }
                 else{
                     if(!empty(trim($_GET['yearField'])))
-                    Page::MoviesSearch($movies,$number,trim($_GET['searchField'])."/".trim($_GET['yearField']),$msg);
+                        Page::MoviesSearch($movies,$number,trim($_GET['searchField'])."/".trim($_GET['yearField']),$msg);
                     else{
                         Page::MoviesSearch($movies,$number,trim($_GET['searchField']),$msg);
                     }
@@ -281,6 +307,9 @@ require_once("inc/Utilities/DAO/UserDAO.class.php");
 
             if(isset($_GET['searchField']) && empty(trim($_GET['searchField']))){
                 $msg = "Movie Not Found!"."<BR>"."Try Refine Your Search!";
+                 //Log Message
+                 error_log("Message: ".$msg
+                 ." Search: ".$_GET['searchField']. " / Year: ".$_GET['yearField']. " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILE);
                 Page::MoviesSearch($movies,$number,$_GET['searchField'],$msg);
                 Page::Footer();
             }

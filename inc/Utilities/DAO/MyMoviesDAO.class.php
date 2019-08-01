@@ -75,6 +75,8 @@ class MyMoviesDAO {
         return self::$db->singleResult();
 
     }
+
+    
     static function getMovieByUser(int $id)   {
         
         $singleSelect = "SELECT * FROM MyMovies WHERE UserID = :id";
@@ -92,7 +94,25 @@ class MyMoviesDAO {
         return self::$db->resultSet();
 
     }
+    static function getMovieByCategory(int $id)   {
+        
+        $singleSelect = "SELECT category, count(category) as Quantity
+        FROM MyMovies WHERE UserID = :id
+        GROUP BY Category";
 
+        //Prepare the query
+        self::$db->query($singleSelect);
+
+        //Set the bind parameters
+        self::$db->bind(':id', $id);
+
+        //Execute the query
+        self::$db->execute();
+
+        //Get the row
+        return self::$db->resultSet();
+
+    }
     static function getMovie2(string $IMDbID, int $UID) : Movies   {
         
         

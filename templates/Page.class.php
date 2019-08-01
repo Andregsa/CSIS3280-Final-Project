@@ -405,12 +405,13 @@ static function showCreateUser($errors) { ?>
 
 
   static function MovieDetail(Movies $movie,$msg="",$search=""){
-
+       $defaultImage = "'https://www.moviewatcher.site//assets/img/no_poster_available.png'"; 
+       
         echo '<div class="movie_detail">';
         echo '<table id="movie_detail" class="table table-dark">';
 
         echo '<tr>';
-        echo  '<td rowspan="6"><img src="'.$movie->getPoster().'" alt="" /></td>' ;
+        echo  '<td rowspan="6"><img src="'.$movie->getPoster().'" alt="Poster Missing" onerror="this.onerror=null;this.src='. $defaultImage  .'; " /></td>' ;
         echo  '<th>'."Title:".'</th>' ;
         echo  '<td>'.$movie->getTitle().'</td>' ;
         echo '</tr>';
@@ -541,7 +542,7 @@ static function showCreateUser($errors) { ?>
       
       <?php
       }
-      static function mymovies($mm, $lastclicked="", $msg)
+      static function mymovies($mm, $lastclicked="", $msg,$statsCategory=Array())
       {?>
       <table class="table table-dark">
       <?php
@@ -603,7 +604,39 @@ static function showCreateUser($errors) { ?>
       }
       echo '</tbody>';
       ?>
+      </table >
+
+
+      <h2 style="text-align:center; text-decoration: underline;">Statistics of Movies by Category</h2>
+      <table class="table table-dark" style="width:50%;   margin-left: auto;margin-right: auto;">
+      <?php
+    
+    
+      echo '<thead style="text-align:center; font-size:1.2em;">';
+      echo '<tr>';
+      echo '<th>'."Category".'</th>';
+      echo '<th>'."Quantity".'</th>';
+      echo '</tr>';
+      echo '</thead>';
+
+      echo '<tbody>';
+      foreach($statsCategory as  $movie)
+      {
+        
+        echo '<tr style="text-align:center;">';
+        echo '<td>'.$movie->category.'</td>';
+        echo '<td>'.$movie->Quantity.'</td>';
+        echo '</tr>';
+      }
+      echo '</tbody>';
+      ?>
       </table>
+
+
+
+
+
+
       <?php
       }
       Static function showEditCategory($movie,$msg){ 

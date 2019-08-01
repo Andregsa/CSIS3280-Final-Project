@@ -1,16 +1,16 @@
 <?php
 class User
 {
-// +------------+------------------+------+-----+---------+----------------+
-// | Field      | Type             | Null | Key | Default | Extra          |
-// +------------+------------------+------+-----+---------+----------------+
-// | UserID     | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-// | Password   | text             | NO   |     | NULL    |                |
-// | Email      | char(100)        | NO   |     | NULL    |                |
-// | First_Name | char(30)         | NO   |     | NULL    |                |
-// | Last_Name  | char(30)         | NO   |     | NULL    |                |
-// | Birthday   | date             | YES  |     | NULL    |                |
-// +------------+------------------+------+-----+---------+----------------+
+    // +------------+------------------+------+-----+---------+----------------+
+    // | Field      | Type             | Null | Key | Default | Extra          |
+    // +------------+------------------+------+-----+---------+----------------+
+    // | UserID     | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+    // | Password   | text             | NO   |     | NULL    |                |
+    // | Email      | char(100)        | NO   | UNI | NULL    |                |
+    // | First_Name | char(30)         | NO   |     | NULL    |                |
+    // | Last_Name  | char(30)         | NO   |     | NULL    |                |
+    // | Birthday   | date             | YES  |     | NULL    |                |
+    // +------------+------------------+------+-----+---------+----------------+
 
     //Attributes
     private $UserID;

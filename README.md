@@ -12,8 +12,6 @@ Created MyMovies list -- need to add option to delete/edit.
 Make the Mark as Watched button work
 
 Andre
-Create MyWatched Movies  List
-Admin Page to edit the HomePage movies
 Schedule Report Gantt Chart
 
 ADAM
@@ -21,19 +19,16 @@ Validation
 REstclient
 User Manual
 
-WHEN YOU CLICK THE BUTTON WATCHED THROUGH SEARCH MODE, IT WILL GET THE ID FROM THE MOVIES STORED IN THE HOME PAGE ACCORDING TO THE FUNCTION Static function wmovies($Wm) IN PAGE.PHP. I THINK THE BEST WAY IS ADD TO DB TABLE THE IMDBID THAT IS UNIQUE FOR EACH MOVIE, AND THEN MANAGE THIS.
 
-USE IMDb ID to store the movies in Mylist because is unique, work with TITLE and Year is not good because Year some time is not INT could be "2005-2008"
 
-ASK THE USER TO PUT THE MOVIE RATE IN THE MOMENT THAT HE CLICK THE BUTTON WATCHED!
 
-ADD A BUTTON IN MY LIST TO SEE MOVIE DETAILS AND ADD TO WATCHED MOVIES!
+
 
 MISSING THE STATISTICS
-MESSAGES 
-ERROR LOGS(GET THE ERRORS FROM THE WEB SERVER)!
-ADD LOGO TO THE TAB (LAB 10)
-SORT MYMOCIES LIST BY YEAR & CATEGORY & TITLE
+
+
+
+
 -NEED TO UPDATE THE DESC TABLES IN THE ENTITIES COMMENTS
 
 

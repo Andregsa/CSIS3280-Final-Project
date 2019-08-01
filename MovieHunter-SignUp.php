@@ -25,14 +25,26 @@
             $u->setLast_Name($_POST['last_name']);
             $u->setBirthday($_POST['birthday']);
             $u->setEmail($_POST['email1']);
-            $u->setPassword(password_hash($_POST['password1'], PASSWORD_DEFAULT));
+            $encryptedPW = password_hash($_POST['password1'],PASSWORD_DEFAULT);
+            $u->setPassword($encryptedPW);
          
             if(UserDAO::getUserEmail($_POST['email1'])==false){
-                UserDAO::createUser($u);
+                $newUserID = UserDAO::createUser($u);
                 header('Location: '."MovieHunter-Login.php?SignUpMsg=Account%20Created%20Successfully!");
+                error_log("New User Created! ID: ".$newUserID.
+                " Account Informatio: "
+                ."Fn: ".$_POST['first_name']
+                ."/ Ln: ".$_POST['last_name']
+                ."/ BOD: ".$_POST['birthday']
+                ."/ Email: ".$_POST['email1']
+                ."/ Password: ".$encryptedPW.
+                " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER); 
             }
             else{
                 $errors[]="This email is already being used!";
+                 //Log the message
+                error_log("SignUp Message: ".$errors[0]
+                ." / Email: ".$_POST['email1']. " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER); 
 
             }
             

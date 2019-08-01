@@ -37,13 +37,26 @@ if(isset($_POST))
             }
             else{
                 $msg = "Insert a Rate Between 1-10";
+                 //Log the message
+                error_log("Message: ".$msg
+                ." / Rate Enter by User: ".$r. " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER); 
             }
         }
     }
     else if(isset($_POST['delete']))
     {
-        WatchedMoviesDAO::deleteWMovie($_POST['delete']);
-        header('Location: '.$_SERVER['PHP_SELF']);
+       if( WatchedMoviesDAO::deleteWMovie($_POST['delete'])){
+         header('Location: '.$_SERVER['PHP_SELF']);
+         //Log the message
+         error_log("WatchedMovie ID: ".$_POST['delete']
+         ." Was deleted from MyWatched List ". " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER); 
+       }
+
+       else{
+        //Log the message
+        error_log("WatchedMovie ID: ".$_POST['delete']
+        ." Could not be deleted from MyWatched List ". " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER); 
+       }
     }
 }
 Page::wmovies($movies,$msg);

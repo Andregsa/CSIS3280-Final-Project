@@ -1,6 +1,18 @@
 <?php
 class WatchedMovies
 {
+
+
+    // +-----------+------------------+------+-----+---------+----------------+
+    // | Field     | Type             | Null | Key | Default | Extra          |
+    // +-----------+------------------+------+-----+---------+----------------+
+    // | WatchedID | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+    // | UserID    | int(11)          | NO   | PRI | NULL    |                |
+    // | IMDbID    | varchar(20)      | NO   |     | NULL    |                |
+    // | Date      | date             | NO   |     | NULL    |                |
+    // | Rate      | varchar(5)       | NO   |     | NULL    |                |
+    // +-----------+------------------+------+-----+---------+----------------+
+
     //Attributes
     private $WatchedID;
     private $UserID;

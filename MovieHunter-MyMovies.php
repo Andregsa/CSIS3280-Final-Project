@@ -32,14 +32,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     if($result>0){
                     $msg = "Category Edited!";
                     $movies = MyMoviesDAO::getMovieByUserSort($user->getUserID(),"Title");
+                    //Log the message
+                    error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                    ." / IMDbID: ".$movieEdit->getIMDbID()." / New Category: ".$_POST['movieCategory']. " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);   
+
                     }
                     else{
                         $msg = "Category Unchanged!";
+                        //Log the message
+                        error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                    ." / IMDbID: ".$movieEdit->getIMDbID()." / New Category: ".$_POST['movieCategory']. " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);   
+
                     }
                 }
                 
             } else {
                 $msg = "Category Unchanged!";
+                 //Log the message
+                 error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                 ." / IMDbID: ".$movieEdit->getIMDbID()." / New Category: ".$_POST['movieCategory']. " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);   
+
             }
             
           
@@ -59,6 +71,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $movieDelete = MyMoviesDAO::deleteMovie($_POST['deleteMovie'],$user->getUserID());
             $msg = "The Movie Was Deleted";
             $movies = MyMoviesDAO::getMovieByUserSort($user->getUserID(),"Title");
+            //Log the message
+            error_log("UserID: ".$user->getUserID()." Message: ".$msg
+            ." / IMDbID: ".$_POST['deleteMovie']. " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER); 
         }
         
     }
@@ -148,12 +163,14 @@ function sortMovies($lastbtn,$columnName){
 }
 
 
+$statsCategory = MyMoviesDAO::getMovieByCategory($user->getUserID());
+
 //Ensures that the page will remain on the edit page with these things true
 //Otherwise the mymovies page will display
 if(isset($_GET['action']) && $_GET['action'] == "edit" ){
     Page::showEditCategory($movie,$msg);
 } else {
-    Page::mymovies($movies,$lastClickedBTN,$msg);
+    Page::mymovies($movies,$lastClickedBTN,$msg,$statsCategory);
 }
 
 

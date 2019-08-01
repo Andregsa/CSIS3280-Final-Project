@@ -17,6 +17,8 @@
             UserDAO::deleteUser($_GET["id"]);
             $_SESSION['logged'] = null;
             header('Location: '.$_SERVER['PHP_SELF']);
+            //Log the message
+            error_log("UserID: ".$user->getUserID()." Deleted his Account" . " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER); 
         }
         else 
         {
@@ -47,6 +49,17 @@
             $nu->setPassword($user->getPassword());
             UserDAO::updateUser($nu);
             header('Location: '.$_SERVER['PHP_SELF']);
+
+            //Log the message
+            error_log("UserID: ".$user->getUserID()." Updated his Account: "
+            ."Fn: ".$_POST['first_name']
+            ."/ Ln: ".$_POST['last_name']
+            ."/ BOD: ".$_POST['birthday']
+            ."/ Email: ".$_POST['email1']
+            ."/ Password: ".$encryptedPW
+            
+            . " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER); 
+
         }
         if(isset($_POST['loggedOut']))
         {

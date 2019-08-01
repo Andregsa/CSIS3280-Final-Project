@@ -23,7 +23,7 @@ CREATE TABLE MyMovies
    UserID INT NOT NULL,
    IMDbID VARCHAR(20),
    Title CHAR(100),
-   Year  YEAR(4),
+   Year  VARCHAR(15),
    Runtime VARCHAR(10),
    Genre TEXT(60),
    Plot TEXT(2000),

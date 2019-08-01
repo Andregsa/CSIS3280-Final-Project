@@ -19,6 +19,7 @@ define("OMDB_KEY","&apikey=bde511bb");
 
 //Define the error log
 define("LOG_FILE", "Log/ErrorLog/erros.log");
+define("LOG_FILEUSER", "Log/ErrorLog/userLog.log");
 
 //Set the date.timezone (ini_set) to show up in the error log
 ini_set("date.timezone","America/Vancouver");

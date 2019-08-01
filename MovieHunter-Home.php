@@ -79,11 +79,17 @@
                     if ($sameMovie == true){
                         $msg="Movie Already Added";
                         $action="detailMovieID";
+                        //Log the message
+                        error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                         ." / IMDbID: ".$myMovies->getIMDbID(). " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
                     } else {
                         $result = MyMoviesDAO::createMovie($myMovies);
                         if($result>0){
                             $msg="Movie Added to Your List";
                             $action="detailMovieID";
+                            //Log the message
+                            error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                            ." / IMDbID: ".$myMovies->getIMDbID(). " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
                         }
                     }
                 }
@@ -107,8 +113,12 @@
                         
                     }
                     if ($sameMovie == true){
-                        $msg="Movie Already Added";
+                        $msg="Movie Already Watched";
                         $action="detailMovieID";
+                        //Log the message
+                        error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                        ." / IMDbID: ".$myMovies->getIMDbID(). " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
+
                     } else {
                         $myMovies->setUserID($user->getUserID());
                              //VERIFY IF THE MOVIE IS ALREADY IN THE MYMOVIES LIST!!!!
@@ -133,9 +143,14 @@
                             if(!WatchedMoviesDAO::createWMovies($wm)==null){
                                 $msg="Movie Added to Your Watch List";
                                 $action="detailMovieID";
+                                //Log the message
+                                error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                                ." / IMDbID: ".$myMovies->getIMDbID(). " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
                                 }
                                 else{
                                     $msg="Error While Adding the Movie";
+                                    error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                                    . " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
                                 }
                         
                         }
@@ -164,9 +179,15 @@
                             if(!WatchedMoviesDAO::createWMovies($wm)==null){
                                 $msg="Movie Added to Your Watch List";
                                 $action="detailMovieID";
+                                //Log the message
+                                error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                                ." / IMDbID: ".$myMovies->getIMDbID(). " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
                                 }
                                 else{
                                     $msg="Error While Adding the Movie";
+                                    //Log the message
+                                    error_log("UserID: ".$user->getUserID()." Message: ".$msg
+                                    . " at ". date('m/d/Y H:i:s', time()). "\n",3, LOG_FILEUSER);
                                 }
     
                         }

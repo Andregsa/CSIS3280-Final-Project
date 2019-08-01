@@ -5,15 +5,15 @@ class Movies
     // | Field    | Type             | Null | Key | Default | Extra          |
     // +----------+------------------+------+-----+---------+----------------+
     // | MovieID  | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-    // | UserID   | int(11)          | NO   | PRI | NULL    |                |
     // | Title    | char(100)        | YES  |     | NULL    |                |
     // | Year     | year(4)          | YES  |     | NULL    |                |
-    // | Runtime  | int(3)           | YES  |     | NULL    |                |
+    // | Runtime  | varchar(10)      | YES  |     | NULL    |                |
     // | Genre    | tinytext         | YES  |     | NULL    |                |
     // | Plot     | text             | YES  |     | NULL    |                |
     // | Poster   | varchar(1024)    | YES  |     | NULL    |                |
-    // | Rating   | float(3,1)       | NO   |     | NULL    |                |
-    // | Category | varchar(50)      | YES  |     | NULL    |                |
+    // | Rating   | varchar(5)       | NO   |     | NULL    |                |
+    // | Category | varchar(50)      | NO   |     | NULL    |                |
+    // | IMDbID   | varchar(20)      | NO   |     | NULL    |                |
     // +----------+------------------+------+-----+---------+----------------+
     //Attributes
     private $MovieID;
